@@ -1,14 +1,42 @@
 {
   "pages": [
-    "pages/sort/sort"
+    "pages/lost/lost",
+    "pages/sort/sort",
+    "pages/user/user"
   ],
   "window": {
-    "backgroundColor": "#F6F6F6",
+    "backgroundColor": "#00d47f",
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "校园失物招领平台",
+    "enablePullDownRefresh": true,
+    "navigationBarBackgroundColor": "#00d47f",
     "navigationBarTextStyle": "black"
   },
-  "sitemapLocation": "sitemap.json",
-  "style": "v2"
+  "tabBar": {
+    "color": "#b7b7b7",
+    "selectedColor": "AB956D",
+    "borderStyle": "black",
+    "backgroundColor": "#fff",
+    "selectedindex": 1,
+    "list": [
+      {
+        "pagePath": "pages/lost/lost",
+        "iconPath": "images/lost-select.png",
+        "selectedIconPath": "images/lost-selected.png",
+        "text": "找回"
+      },
+      {
+        "pagePath": "pages/sort/sort",
+        "iconPath": "images/lost-select.png",
+        "selectedIconPath": "images/lost-selected.png",
+        "text": "认领"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "iconPath": "images/lost-select.png",
+        "selectedIconPath": "images/lost-selected.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
 }
