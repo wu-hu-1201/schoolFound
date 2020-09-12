@@ -1,0 +1,68 @@
+<!-- miniprogram/pages/sort/sort.wxml -->
+<!-- 分类界面 -->
+<!-- 搜索框 -->
+<view class="wrapper">
+    <view class="page__bd">
+        <view class="weui-search-bar">
+            <view class="weui-search-bar__form">
+                <view class="weui-search-bar__box" bindtap="show">
+                    <icon class="weui-icon-search_in-box" type="search" size="14" color='#eeeeee'></icon>
+                    <input focus='true' type="text" class="weui-search-bar__input" 
+                        placeholder="请输入物品关键词" placeholder-style="color:#eeeeee" 
+                        value='{{inputValue}}' bindinput="getsearchKey" 
+                        bindblur="routeSearchResPage" bindconfirm="searchover"/>
+                    <!-- 点击×可以清空正在输入 -->
+                    <view class="{{showClean? 'hide': 'weui-icon-clear'}}">
+                        <icon type="clear" size="14" color='#999999' bindtap="clearInput"></icon>
+                    </view>
+                </view>
+            </view>
+            <!-- 取消搜索 -->
+            <view class="{{isShow? 'hide' : 'weui-search-bar__cancel-btn'}}" bindtap="cancel">
+                取消
+            </view>
+        </view>
+    </view>
+    <!-- 搜索建议 -->
+    <view class="{{showSuggest ? 'search_suggest' : 'hide'}}">
+        <view wx:for="{{searchSuggest}}" wx:key="index" class='search_result' data-value='{{item.keyword}} ' bindtap='fill_value'>
+            <image class="search-pic" src="../../images/sort-search.png"></image>
+            <view class="search_suggest_name">{{item.keyword}}</view>
+        </view>
+    </view>
+    <!-- 搜索历史 -->
+    <view class="{{showHistory ? 'hide' : 'option'}}">
+        <view class="history">
+            <view class="history-wrapper">
+                <text class="history-name">历史记录</text>
+                <image bindtap="clearHistory" class="history-delete" src="../../images/sort-del.png" />
+            </view>
+            <view class="allhistory">
+                <view class="allhistorybox" wx:for="{{history}}" wx:key="index" data-value='{{item}}' data-index="{{index}}" bindtap="fill_value">
+                    <text class="historyname">{{item}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <!-- 分类名称栏 -->
+    <view class="{{showView? 'sort' : 'hide'}}">
+        <view wx:for="{{thing}}" wx:key="index" class="scrot-box">
+            <image class="img" src="{{item.img}}" />
+            <view class="thingName">{{item.text}}</view>
+        </view>
+    </view>
+    <!-- 物品类标题栏 -->
+    <view class="{{showView? 'group' : 'hide'}}" wx:for="{{allThing}}" wx:key="index">
+        <view class="top">
+            <text class="title">{{item.title}}</text>
+            <view class="moreLook">
+                <image class="more" src="../../images/sort-back.png" />
+                <text class="look">查看更多</text>
+            </view>
+        </view>
+        <scroll-view class="{{showView? 'scroll-view_thing' : 'hide'}}" scroll-x="{{true}}">
+            <!-- 组件：各类物品详情栏 -->
+            <thingItem class="item" wx:for="{{item.des}}" wx:key="index" wx:for-item="des" des="{{des}}"></thingItem>
+        </scroll-view>
+    </view>
+</view>
