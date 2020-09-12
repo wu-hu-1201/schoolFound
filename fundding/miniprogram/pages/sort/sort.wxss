@@ -1,7 +1,7 @@
 /* 搜索框 */
-/* .wrapper {
+.wrapper {
     background: #ededed;
-} */
+}
 .hide {
     display: none; 
 }
