@@ -1,2 +1,21 @@
-<!--components/lostItem/lostItem.wxml-->
-<text>components/lostItem/lostItem.wxml</text>
+<view class="content">
+    <view class="content-item" wx:for="{{LostList}}" wx:key="index" >
+        <view class="left">
+            <image class="img" src="{{item.img}}"/>
+        </view>
+        <view class="right">
+            <view class="title">{{item.title}}</view>
+            <view class="intro">{{item.intro}}</view>
+            <view class="tag">
+                <span class="item">{{item.categoryTag}}</span>
+            </view>
+            <view class="right-foot">
+                <view class="user">
+                    <image class="avatar" src="{{item.avat}}" />
+                    <span class="author">{{item.upName}}</span>
+                </view>
+                <span class="date">{{item.date}}</span> 
+            </view>
+        </view>    
+    </view>
+</view>

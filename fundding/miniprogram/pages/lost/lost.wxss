@@ -51,7 +51,9 @@
     letter-spacing: 10rpx
 }
 
-
+.contaier{
+    width: 100%;
+}
 .container .category{
     display: flex;
     flex-wrap: nowrap;

@@ -19,11 +19,17 @@
 
     <view class="container">
         <view class="category">
-            <view class="item {{ isClick == index? 'selected' : ''}}" bindtap="clickSelected"  data-num="{{index}}" wx:for="{{categoryList}}" wx:key="index">
+            <view 
+            class="item {{ clickNum == index? 'selected' : ''}}" 
+            bindtap="clickSelected"  
+            data-num="{{index}}" 
+            wx:for="{{categoryList}}" 
+            wx:key="index"
+            >
                 {{item}}
             </view>
         </view>
-        <lost-item></lost-item>
+        <lost-item class="lost-item" LostList='{{selectCategory}}'></lost-item>
     </view>
     <van-button plain hairline type="primary" size="small" icon="plus" class="release">发布</van-button>
     
