@@ -2,13 +2,12 @@
   "pages": [
     "pages/lost/lost",
     "pages/sort/sort",
-    "pages/user/user"
+    "pages/user/user",
+    "pages/release/release"
   ],
   "window": {
-    "backgroundColor": "#00d47f",
     "backgroundTextStyle": "light",
-    "enablePullDownRefresh": true,
-    "navigationBarBackgroundColor": "#00d47f",
+    "navigationBarBackgroundColor": "#32B4FF",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {

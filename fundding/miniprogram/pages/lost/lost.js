@@ -68,6 +68,7 @@ Page({
     selectCategory: []
     
   },
+
   // 点击展示不同类型的物品
   clickSelected: function (e) {
     if( !this.data.LostList) {
@@ -76,16 +77,36 @@ Page({
     let array = []
     this.data.LostList.forEach((item) => {
       if(e.target.dataset.num != 0){
-        if(item.categoryTag === this.data.categoryList[e.target.dataset.num]  ) {
+        if(item.categoryTag == this.data.categoryList[e.target.dataset.num] ) {
           array.push(item)
-        }
+          console.log('11')
+        } 
+      // }else if ( this.data.categoryList[e.target.dataset.num] == '其他' || item.categoryTag === '其他' || item.categoryTag !== '证件' || item.categoryTag !== '书籍'|| item.categoryTag !== '贵重物品') {
+      //     array.push(item)
+      //   }
       } else {
         array.push(item)
+        console.log('111')
       }
     })
     this.setData({
       clickNum: e.target.dataset.num,
       selectCategory: array
+    })
+  },
+
+  //跳转进入发布页面
+  ToRelease() {
+    wx.navigateTo({
+      url: '../release/release'
+    })
+    
+    wx.hideTabBar()
+  },
+  change(){
+    wx.setNavigationBarColor({
+      backgroundColor: '#7AB9E2',
+      frontColor: '#ffffff'
     })
   },
 

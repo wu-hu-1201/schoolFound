@@ -1,20 +1,20 @@
 <view class="main">
     <view class="top">
         <view class="top-header">
-            <view class="title">失物招领</view>
+            <view class="title" bindtap="change">失物招领</view>
             <view class="map">
                 <van-icon name="arrow-down" class="arrow"/>
                 <span class="addr">南昌</span>
             </view>
         </view>
-        <view class="top-content">
+        <!-- <view class="top-content">
             <view class="top-content_lost item">
                 <view class="title">找回</view>
             </view>
             <view class="top-content_found item">
                 <view class="title">认领</view>
             </view>
-        </view>
+        </view> -->
     </view>
 
     <view class="container">
@@ -31,7 +31,7 @@
         </view>
         <lost-item class="lost-item" LostList='{{selectCategory}}'></lost-item>
     </view>
-    <van-button plain hairline type="primary" size="small" icon="plus" class="release">发布</van-button>
+    <van-button plain hairline type="primary" size="small" icon="plus" class="release" bindtap="ToRelease">发布</van-button>
     
 
 </view>

@@ -1,0 +1,26 @@
+<view class="main">  
+    <image class="background" src="../../images/background-release.jpg"/>
+    
+    <view class="container">
+        <view class="wrapper">
+            <view class="wrapper-header">
+                <view class="item">
+                    Lost
+                </view>
+                <view class="item">
+                    Found
+                </view>
+            </view>
+            <view class="wrapper-content">
+                <view class="item">
+                    <view class="title">标题</view>
+                    <van-field placeholder="同学你还没有输入标题呢"></van-field>
+                </view>
+                <view class="item">
+                    <view class="intro">简介</view>
+                    <van-field placeholder="你丢失的物品是什么样的?"></van-field>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

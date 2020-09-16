@@ -3,8 +3,8 @@
 }
 .top {
     /* background-image: linear-gradient(#22dd92, #fff); */
-    background-color: #00d47f;
-    height: 470rpx;
+    background-color: rgb(50, 180, 255);
+    height: 350rpx;
     padding-top: 65rpx;
 }
 .top .top-header {
@@ -31,7 +31,7 @@
 }
 
 
-.top .top-content {
+/* .top .top-content {
     margin: 60rpx auto;
     width: 650rpx;
     height: 300rpx;
@@ -49,7 +49,7 @@
     font-weight: 700;
     color: #fff;
     letter-spacing: 10rpx
-}
+} */
 
 .contaier{
     width: 100%;
@@ -83,5 +83,5 @@
     position: fixed;
     right: 50rpx;
     bottom: 50rpx;
-    
+    border-radius: 30rpx;
 }

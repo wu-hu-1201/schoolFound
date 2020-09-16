@@ -1,2 +1,29 @@
-<!--pages/user/user.wxml-->
-<text>pages/user/user.wxml</text>
+<view class="container">
+    <view class="cover1"></view>
+    <view class="cover2"></view>
+    <view class="container-content">
+        <view class="content-user">
+            <image src="../../images/avatar.jpeg" class="item-ava" alt="" />
+            <view class="item-name">蜗牛</view>
+        </view>
+        <view class="content-release">
+            <view class="item-title">
+                <view class="title">我的发布</view>    
+            </view>
+            <view class="item-release">
+                <view class="content" wx:for="{{releaseList}}" wx:key="index">  
+                    <view class="left item">
+                        <view class="date">{{item.date}}</view>
+                    </view>
+                    <view class="right item">
+                        <view class="intro">{{item.intro}}</view>
+                    </view>
+
+                </view>
+            </view>
+
+        </view>
+    </view>
+    <view class="release" bindtap="ToRelease"> release </view>
+    
+</view>
