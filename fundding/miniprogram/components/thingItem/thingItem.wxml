@@ -1,6 +1,6 @@
 <!--components/thingItem/thingItem.wxml-->
 <!--component/movieItem/movieItem.wxml-->
-<view class="item">
+<view class="item" bindtap="goDetail">
     <view class="info">
         <image class="img" src="{{des.pic}}"></image>
         <view class="name">{{des.place}}</view>

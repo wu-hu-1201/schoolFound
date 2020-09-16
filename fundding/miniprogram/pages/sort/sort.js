@@ -237,6 +237,12 @@ Page({
     this.searchResult();  // 执行搜索结果
   },
 
+  lookInfo: function (e) {
+    console.log(e)
+    wx.navigateTo({
+      url: `../information/information`
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

@@ -7,10 +7,8 @@
     display: flex;
     flex-direction: column;
 }
-.score-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.thingImg-a {
+    
 }
 .name {
     font-size: 28rpx;

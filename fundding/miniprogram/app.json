@@ -2,7 +2,9 @@
   "pages": [
     "pages/lost/lost",
     "pages/sort/sort",
-    "pages/user/user"
+    "pages/user/user",
+    "pages/information/information",
+    "pages/detail/detail"
   ],
   "window": {
     "backgroundColor": "#00d47f",
