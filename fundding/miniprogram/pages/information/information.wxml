@@ -1,0 +1,54 @@
+<view class="wrapper">
+    <view class="header">
+        <view class="header_load header_bd" style="color:{{isLeft?'#ef4238':'#666'}}" bindtap="tabChangeNew">
+            最新
+        </view>
+        <view class="header_fllow header_bd" style="color:{{isLeft?'#666':'#ef4238'}}" bindtap="tabChangeOld">
+            过往
+        </view>
+        <view class="buttomLine" style="left:{{isLeft?'73px':'195px'}}"></view>
+    </view>
+    <view class="{{showNew? 'new' : 'hide'}}">
+        <view class="newTime" wx:for="{{newTime}}" wx:key="index">
+            <view class="{{imageNum? 'infoImages' : 'infoImg'}}">
+                <block wx:for="{{item.images}}" wx:key="index" wx:for-item="images">
+                    <image class="{{imageNum? 'info_images' : 'info_img'}}" src="{{images.img}}" />
+                </block>
+            </view> 
+             <!-- <view class="{{imageNum? 'infoImg' : 'infoImages'}}">
+                <block wx:for="{{item.images}}" wx:key="index" wx:for-item="images">
+                    <image class="{{imageNum? 'info_img' : 'info_images'}}" src="{{images.img}}" />
+                </block>
+            </view>  -->
+             <view class="test">{{item.test}}</view>
+            <view class="downBox">
+                <image class="logo" src="{{item.logo}}" />
+                <text class="auther">{{item.author}}</text>
+                <text class="auther-time">{{item.authorTime}}</text>
+            </view>
+        </view>
+    </view> 
+    <sxroll-view class="{{showOld? 'downbox' : 'hide'}}" scroll-y="true">
+        <view class="comment">
+            <view class="commentbox">
+                <text class="comment-name">温馨提示</text>
+                <text class="comment-arrow"></text>
+                <view class="comment-des">私人及相关贵重物品记得打码发布哦</view>
+            </view>
+        </view>
+        <view class="video-allbox">
+        <block wx:for="{{oldTime}}" wx:key="index">
+                <view class="otherbox">
+                    <image class="videoimage" src="{{item.img}}" />
+                    <view class="describe">
+                        <text>地点：{{item.place}}</text>
+                    </view>
+                    <view class="writer">
+                        <image class="writer-pic" src="{{item.logo}}" />
+                        <text class="writer-name">{{item.writer}}</text>
+                    </view>
+                </view>
+            </block>
+        </view>
+    </sxroll-view>
+</view>

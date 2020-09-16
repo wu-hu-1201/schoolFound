@@ -3,7 +3,9 @@
     "pages/lost/lost",
     "pages/sort/sort",
     "pages/user/user",
-    "pages/release/release"
+    "pages/release/release",
+    "pages/information/information",
+    "pages/detail/detail"
   ],
   "window": {
     "backgroundTextStyle": "light",

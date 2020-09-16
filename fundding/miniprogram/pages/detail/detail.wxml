@@ -1,0 +1,24 @@
+<!-- miniprogram/pages/detail/detail.wxml -->
+<view class="wrapper">
+    <view class="block"></view>
+    <view class="wrapper-box" wx:for="{{detail}}" wx:key="index">
+        <view class="title">
+            <image class="photo" src="{{item.photo}}" />
+            <text class="name">Mr.yuan</text>
+        </view>
+        <view class="test">{{item.test}}</view>
+        <!-- <view class="img-box" wx:for="{{item.images}}" wx:key="index" wx:for-item="images">
+            <image class="thingImg" src="{{images.img}}" />
+        </view> -->
+        <view class="img-box-a">
+            <block wx:for="{{item.images}}" wx:key="index" wx:for-item="images">
+                <image class="thingImg-a" src="{{images.img}}" />
+            </block>
+        </view>
+        <view class="time">
+            <text class="timeName">发布于：</text>
+            <text class="timeNum">{{item.time}}</text>
+            <text class="logo">雨伞</text>
+        </view>
+    </view>
+</view>
