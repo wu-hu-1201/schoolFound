@@ -1,26 +1,44 @@
-<view class="main">  
-    <image class="background" src="../../images/background-release.jpg"/>
-    
+<view class="main">
+    <image class="background" src="../../images/3.jpg" />
     <view class="container">
         <view class="wrapper">
             <view class="wrapper-header">
-                <view class="item">
+                <view class="item {{isSelect == 0 ? 'isselect' : ''}}" bindtap="switchSelect" data-id='0'>
                     Lost
                 </view>
-                <view class="item">
+                <view class="item {{isSelect == 1 ? 'isselect' : ''}}" bindtap="switchSelect" data-id='1'>
                     Found
                 </view>
             </view>
             <view class="wrapper-content">
                 <view class="item">
-                    <view class="title">标题</view>
-                    <van-field placeholder="同学你还没有输入标题呢"></van-field>
+                    <view class="title fs">标题</view>
+                    <input class="text" type="text" placeholder="同学你的标题还没有填写呢"  bindinput="titleInput"/>
+                </view>
+                <view class="item-un" bindtap="selectType">
+                    <view class="title fs">种类</view>
+                    <van-icon name="arrow" class="arrow" />
+                    <span class="text">{{selectCon}}</span>
+                    <van-action-sheet 
+                    show="{{ show }}" 
+                    actions="{{ actions }}" 
+                    cancel-text="取消" 
+                    bind:select="onSelect" 
+                    bind:cancel="onCancel"
+                    />
                 </view>
                 <view class="item">
-                    <view class="intro">简介</view>
-                    <van-field placeholder="你丢失的物品是什么样的?"></van-field>
+                    <view class="intro fs">简介</view>
+                    <textarea class="textarea" placeholder="{{placeholder}}" placeholder-style="color: #666F8E" maxlength="200" bindinput="introInput"></textarea>
+                </view>
+                <view class="item">
+                    <view class="title fs">上传图片</view>
+                    <view class="up">
+                        <van-uploader max-count="3" file-list="{{ fileList }}" deletable="{{ true }}" bind:after-read="afterRead" bind:delete="delete" />
+                    </view>
                 </view>
             </view>
+            <view class="release" bindtap="release">release</view>
         </view>
     </view>
 </view>
