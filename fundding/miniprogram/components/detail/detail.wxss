@@ -15,7 +15,7 @@
     z-index: 1;
 }
 .wrapper-box {
-    margin-top: 400rpx;
+    margin-top: 380rpx;
 }
 
 
@@ -44,7 +44,6 @@
     border-radius: 40rpx;
     box-shadow: 1px 1px 5px black;
     width: 650rpx;
-    height: 800rpx;
     margin-left: 50rpx;
 }
 

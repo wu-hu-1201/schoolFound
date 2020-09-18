@@ -1,11 +1,16 @@
 /* 搜索框 */
 .wrapper {
-    z-index: 1;
     background: white;
+}
+.quiet {
+    position:fixed;
+    top: 0rpx;
+    width: 100%;
+    z-index: 1;
 }
 .top-block {
     width: 100vh;
-    height: 130rpx;
+    height: 160rpx;
     background: #32B4FF;
 }
 .hide {
@@ -132,7 +137,7 @@
 
 /*搜索历史*/
 .history {
-    margin: 50rpx 0 0 40rpx;
+    margin: 260rpx 0 0 40rpx;
 }
 .history-name {
     font-size: 28rpx;
@@ -169,7 +174,7 @@
     background: #ededed;
     justify-content: space-between;
     padding: 30rpx 40rpx;
-    margin: 30rpx 30rpx 20rpx 30rpx;
+    margin: 300rpx 30rpx 20rpx 30rpx;
     border-radius: 30rpx;
     box-shadow: 1px 1px 5px #888888;
 }
@@ -198,6 +203,7 @@
     height: 400rpx;
     box-shadow: 1px 1px 5px #888888;
     background: #ededed;
+    z-index: -1;
 }
 .top {
     margin: 30rpx 0 0rpx 20rpx;

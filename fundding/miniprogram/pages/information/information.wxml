@@ -1,18 +1,20 @@
-<header-bar class="header"></header-bar>
-<view class="back">
-    <image class="back-img" src="../../images/info-back.png" bindtap="back"/>
-</view>
-<view class="top">
-    <view class="top-01">
-        <text class="top-01-test">Hotel Booking</text>
+<view class="quiet">
+    <header-bar class="header"></header-bar>
+    <view class="back">
+        <image class="back-img" src="../../images/info-back.png" bindtap="back" />
     </view>
-    <view class="top-02">
-        <text class="top-02-test">Best wish all for yours</text>
+    <view class="top">
+        <view class="top-01">
+            <text class="top-01-test">Hotel Booking</text>
+        </view>
+        <view class="top-02">
+            <text class="top-02-test">Best wish all for yours</text>
+        </view>
     </view>
 </view>
 <scroll-view class="wrapper">
     <view class="group" wx:for="{{kind}}" wx:key="index" bindtap="goDetail">
-        <image class="group-img" src="{{item.img}}"/>
+        <image class="group-img" src="{{item.img}}" />
         <view class="des">
             <view class="title">
                 <text>{{item.title}}</text>

@@ -2,27 +2,29 @@
 <!-- 分类界面 -->
 <!-- 搜索框 -->
 <view class="{{showSort? 'wrapper' : 'hide'}}">
-<view class="top-block"></view>
-<view class="water">
-    <image src='https://6661-fatdown-wxapp-sg2p1-1300398887.tcb.qcloud.la/wave.gif?sign=045605c672f482a8c3d428abed669aa7&t=1570674356' mode='scaleToFill' class='gif-wave'></image>
-    <view class="page__bd">
-        <view class="weui-search-bar">
-            <view class="weui-search-bar__form">
-                <view class="weui-search-bar__box" bindtap="show">
-                    <icon class="weui-icon-search_in-box" type="search" size="14" color='#eeeeee'></icon>
-                    <input focus='true' type="text" class="weui-search-bar__input" placeholder="请输入物品关键词" placeholder-style="color:#eeeeee" value='{{inputValue}}' bindinput="getSearchKey" bindblur="routeSearchResPage" bindconfirm="searchover" />
-                    <!-- 点击×可以清空正在输入 -->
-                    <view class="{{showClean? 'hide': 'weui-icon-clear'}}">
-                        <icon type="clear" size="14" color='#999999' bindtap="clearInput"></icon>
+    <view class="quiet">
+        <view class="top-block"></view>
+        <view class="water">
+            <image src='https://6661-fatdown-wxapp-sg2p1-1300398887.tcb.qcloud.la/wave.gif?sign=045605c672f482a8c3d428abed669aa7&t=1570674356' mode='scaleToFill' class='gif-wave'></image>
+            <view class="page__bd">
+                <view class="weui-search-bar">
+                    <view class="weui-search-bar__form">
+                        <view class="weui-search-bar__box" bindtap="show">
+                            <icon class="weui-icon-search_in-box" type="search" size="14" color='#eeeeee'></icon>
+                            <input focus='true' type="text" class="weui-search-bar__input" placeholder="请输入物品关键词" placeholder-style="color:#eeeeee" value='{{inputValue}}' bindinput="getSearchKey" bindblur="routeSearchResPage" bindconfirm="searchover" />
+                            <!-- 点击×可以清空正在输入 -->
+                            <view class="{{showClean? 'hide': 'weui-icon-clear'}}">
+                                <icon type="clear" size="14" color='#999999' bindtap="clearInput"></icon>
+                            </view>
+                        </view>
+                    </view>
+                    <!-- 取消搜索 -->
+                    <view class="{{isShow? 'hide' : 'weui-search-bar__cancel-btn'}}" bindtap="cancel">
+                        取消
                     </view>
                 </view>
             </view>
-            <!-- 取消搜索 -->
-            <view class="{{isShow? 'hide' : 'weui-search-bar__cancel-btn'}}" bindtap="cancel">
-                取消
-            </view>
         </view>
-    </view>
     </view>
     <!-- 搜索建议 -->
     <view class="{{showSuggest ? 'search_suggest' : 'hide'}}">

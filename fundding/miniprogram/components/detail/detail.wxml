@@ -3,7 +3,7 @@
     <view class="box-box"></view>
     <view class="wrapper">
         <view class="block">
-            <image class="block-imgh" src="../../images/down-back.png" bindtap="back" />
+            <image class="block-imgh" src="../../images/detail-back.png" bindtap="back" />
         </view>
         <view class="wrapper-box" wx:for="{{detail}}" wx:key="index">
             <view class="time">

@@ -1,3 +1,10 @@
+.quiet {
+  position:fixed;
+  top: 0rpx;
+  width: 100%;
+  z-index: 2;
+  margin-top: -480rpx;
+}
 .header {
   z-index: -1;
 }
@@ -40,7 +47,7 @@
   background: white;
   border-radius: 70rpx;
   z-index: 1;
-  margin-top: -70rpx;
+  margin-top: 380rpx;
   position: absolute;
 }
 .group {
