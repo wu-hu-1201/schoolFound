@@ -1,6 +1,12 @@
 /* 搜索框 */
 .wrapper {
-    background: #ededed;
+    z-index: 1;
+    background: white;
+}
+.top-block {
+    width: 100vh;
+    height: 130rpx;
+    background: #32B4FF;
 }
 .hide {
     display: none; 
@@ -10,9 +16,10 @@
     padding:8px 30rpx;
     display:flex;
     box-sizing:border-box;
-    background-color:#ededed;
+    background-color:#32B4FF;
     -webkit-text-size-adjust:100%;
-    align-items:center
+    align-items:center;
+    z-index: 999;
 }
 .weui-icon-search{
     margin-right:8px;
@@ -151,15 +158,20 @@
     margin: 20rpx 20rpx 20rpx 20rpx;
 }
 
+.water {
+    background: #32B4FF;
+    height: 130rpx;
+}
+
 /* 分类栏 */
 .sort {
     display: flex;
-    flex-wrap: wrap;
+    background: #ededed;
     justify-content: space-between;
     padding: 30rpx 40rpx;
     margin: 30rpx 30rpx 20rpx 30rpx;
     border-radius: 30rpx;
-    background: white;
+    box-shadow: 1px 1px 5px #888888;
 }
 .img {
     width: 40rpx;
@@ -170,7 +182,7 @@
 }
 .thingName {
     font-size: 22rpx;
-    color: #576B95;
+    color: black;
     margin-left: 10rpx;
 }
 .other {
@@ -183,11 +195,13 @@
 .group {
     margin: 30rpx 30rpx 40rpx 30rpx; 
     border-radius: 20rpx; 
-    /* margin: 30rpx 0rpx 40rpx 30rpx; */
-    background: white;
+    height: 400rpx;
+    box-shadow: 1px 1px 5px #888888;
+    background: #ededed;
 }
 .top {
-    margin: 30rpx 0 20rpx 0rpx;
+    margin: 30rpx 0 0rpx 20rpx;
+    padding: 20rpx 0rpx;
 }
 .title {
     font-size: 32rpx;
@@ -213,9 +227,62 @@
     white-space: nowrap;
 }
 .scroll-view_thing .item {
-    margin-right: 30rpx;
+    margin-right: 5rpx;
 }
 .thingPic {
     width: 120rpx;
     height: 120rpx;
+}
+
+.gif-wave {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    z-index: 99;
+    mix-blend-mode: screen;
+    height: 140rpx;
+}
+
+
+
+.item {
+    display: inline-flex;
+}
+.item .info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 25rpx;
+}
+.name {
+    font-size: 28rpx;
+    font-weight: bold;
+    max-width: 190rpx;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.imag {
+    width: 200rpx;
+    height: 200rpx;
+    margin-bottom: 20rpx;
+    border-radius: 10rpx;
+}
+.time {
+    font-size: 26rpx;
+}
+
+.block {
+    width: 100%;
+    height: 100rpx;
+    background: #eaeaea;
+}
+.block-imgh {
+    width: 40rpx;
+    height: 40rpx;
+    margin-left: 20rpx;
+    margin-top: 30rpx;
+}
+
+.sort-bar {
+    z-index: -1;
 }

@@ -1,5 +1,5 @@
 {
   "usingComponents": {
-     "thingItem": "/components/thingItem/thingItem"
+     "sort-bar": "/components/sort-bar/sort-bar"
   }
 }

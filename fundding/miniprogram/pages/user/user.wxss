@@ -1,6 +1,11 @@
+.back {
+    width: 100%;
+    height: 9vh;
+    background: #32B4FF;
+}
 .container{
     width: 750rpx;
-    height: 100vh;
+    height: 91vh;
     background-image: linear-gradient(#32B4FF, #3262FF);
     padding-top: 50rpx;
     box-sizing: border-box;

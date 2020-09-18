@@ -12,7 +12,7 @@ Page({
         // images: [
         //   {img: '../../images/sort-u.png'}
         // ],
-        time: '2020-09-15 13:14',
+        time: '2020/09/15 13:14',
         images: [
           {img: '../../images/sort-u.png'},
           {img: '../../images/sort-b.png'},

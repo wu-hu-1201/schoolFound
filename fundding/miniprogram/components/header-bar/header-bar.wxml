@@ -1,0 +1,4 @@
+<!--components/header-bar/header-bar.wxml-->
+<view class="backgroung">
+    <image class="bg-img" src="../../images/info-bg.jpg"/>
+</view>

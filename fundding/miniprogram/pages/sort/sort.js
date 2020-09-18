@@ -5,6 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
+    showSort: true,
+    showDetail: true,
+    showBack: true,
     inputValue: null,
     searchKey: [],
     isShow: true,
@@ -154,6 +157,21 @@ Page({
           }
         ]
       },
+    ],
+    detail: [
+      {
+        photo: '../../images/info-logo1.png',
+        test: '金龙啊，我在上次吃饭的地方捡到了你的伞，就在浏阳蒸菜馆里面捡到的，看到了联系我来拿哦，我的联系QQ是：1871516072',
+        // images: [
+        //   {img: '../../images/sort-u.png'}
+        // ],
+        time: '2020-09-15 13:14',
+        images: [
+          {img: '../../images/sort-u.png'},
+          {img: '../../images/sort-b.png'},
+          {img: '../../images/sort-c.png'}
+        ]
+      }
     ]
   },
 
@@ -185,35 +203,35 @@ Page({
   //获取input文本并且实时搜索
   getSearchKey: function (e) {
     console.log(e)
-    // if(e.detail.cursor === 0){
-    //   this.setData({
-    //     showSongResult: false
-    //   })
-    //   return
-    // }
-    // console.log(e.detail) //打印出输入框的值
-    // if (e.detail.cursor != this.data.cursor) { //实时获取输入框的值
-    //   this.setData({
-    //     showSongResult: true,
-    //     searchKey: e.detail.value
-    //   })
-    //   this.searchSuggest();
-    // }
-    // if (e.detail.value) { // 当input框有值时，才显示清除按钮'x'
-    //   this.setData({
-    //     showClean: false  // 出现清除按钮
-    //   })
-    // }
+    if(e.detail.cursor === 0){
+      this.setData({
+        showSongResult: false
+      })
+      return
+    }
+    console.log(e.detail) //打印出输入框的值
+    if (e.detail.cursor != this.data.cursor) { //实时获取输入框的值
+      this.setData({
+        showSongResult: true,
+        searchKey: e.detail.value
+      })
+      this.searchSuggest();
+    }
+    if (e.detail.value) { // 当input框有值时，才显示清除按钮'x'
+      this.setData({
+        showClean: false  // 出现清除按钮
+      })
+    }
   },
 
-  // searchSuggest: function(e) {
-  //   console.log(e)
-  //   if(e.detail === allThing.des.name) {
-  //     this.setData({
-
-  //     })
-  //   }
-  // },
+  searchSuggest: function() {
+    console.log()
+    if(e.detail === this.allThing.title) {
+      this.setData({
+        searchSuggest: this.allThing.des.name
+      })
+    }
+  },
 
   // input失去焦点函数
   routeSearchResPage: function (e) {
@@ -243,6 +261,13 @@ Page({
       url: `../information/information`
     })
   },
+
+  goDetail: function() {
+    wx.navigateTo({
+      url: `../detail/detail`
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */

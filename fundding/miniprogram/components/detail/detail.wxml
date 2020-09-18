@@ -1,0 +1,34 @@
+<view class="all-box">
+    <!-- <image class="bg-img" src="../../images/sort-bg1.jpg"/> -->
+    <view class="box-box"></view>
+    <view class="wrapper">
+        <view class="block">
+            <image class="block-imgh" src="../../images/down-back.png" bindtap="back" />
+        </view>
+        <view class="wrapper-box" wx:for="{{detail}}" wx:key="index">
+            <view class="time">
+                <view class="timeNum">
+                    <text>{{item.time}}</text>
+                </view>
+                <view class="timeName">
+                    <text>发布于</text>
+                </view>
+            </view>
+            <view class="des-box">
+                <view class="title">
+                    <image class="photo" src="{{item.photo}}" />
+                    <text class="name">Mr.yuan</text>
+                </view>
+                <view class="logo-box">
+                    <text class="logo">雨伞</text>
+                </view>
+                <view class="test">{{item.test}}</view>
+                <swiper class="swiper-box" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}">
+                    <swiper-item class="" wx:for="{{item.images}}" wx:key="index" wx:for-item="images">
+                        <image class="slide-image" src="{{images.img}}" />
+                    </swiper-item>
+                </swiper>
+            </view>
+        </view>
+    </view>
+</view>

@@ -1,16 +1,16 @@
 <!-- miniprogram/pages/sort/sort.wxml -->
 <!-- 分类界面 -->
 <!-- 搜索框 -->
-<view class="wrapper">
+<view class="{{showSort? 'wrapper' : 'hide'}}">
+<view class="top-block"></view>
+<view class="water">
+    <image src='https://6661-fatdown-wxapp-sg2p1-1300398887.tcb.qcloud.la/wave.gif?sign=045605c672f482a8c3d428abed669aa7&t=1570674356' mode='scaleToFill' class='gif-wave'></image>
     <view class="page__bd">
         <view class="weui-search-bar">
             <view class="weui-search-bar__form">
                 <view class="weui-search-bar__box" bindtap="show">
                     <icon class="weui-icon-search_in-box" type="search" size="14" color='#eeeeee'></icon>
-                    <input focus='true' type="text" class="weui-search-bar__input" 
-                        placeholder="请输入物品关键词" placeholder-style="color:#eeeeee" 
-                        value='{{inputValue}}' bindinput="getsearchKey" 
-                        bindblur="routeSearchResPage" bindconfirm="searchover"/>
+                    <input focus='true' type="text" class="weui-search-bar__input" placeholder="请输入物品关键词" placeholder-style="color:#eeeeee" value='{{inputValue}}' bindinput="getSearchKey" bindblur="routeSearchResPage" bindconfirm="searchover" />
                     <!-- 点击×可以清空正在输入 -->
                     <view class="{{showClean? 'hide': 'weui-icon-clear'}}">
                         <icon type="clear" size="14" color='#999999' bindtap="clearInput"></icon>
@@ -22,6 +22,7 @@
                 取消
             </view>
         </view>
+    </view>
     </view>
     <!-- 搜索建议 -->
     <view class="{{showSuggest ? 'search_suggest' : 'hide'}}">
@@ -52,7 +53,7 @@
         </view>
     </view>
     <!-- 物品类标题栏 -->
-    <view class="{{showView? 'group' : 'hide'}}"  wx:for="{{allThing}}" wx:key="index">
+    <view class="{{showView? 'group' : 'hide'}}" wx:for="{{allThing}}" wx:key="index">
         <view class="top">
             <text class="title">{{item.title}}</text>
             <view class="moreLook" data-title="{{item.title}}" bindtap="lookInfo">
@@ -61,8 +62,13 @@
             </view>
         </view>
         <scroll-view class="{{showView? 'scroll-view_thing' : 'hide'}}" scroll-x="{{true}}">
-            <!-- 组件：各类物品详情栏 -->
-            <thingItem class="item" wx:for="{{item.des}}" wx:key="index" wx:for-item="des" des="{{des}}"></thingItem>
+            <view class="item" bindtap="goDetail" wx:for="{{item.des}}" wx:key="index" wx:for-item="des">
+                <view class="info">
+                    <image class="imag" src="{{des.pic}}"></image>
+                    <view class="name">{{des.place}}</view>
+                    <view class="time">{{des.time}}</view>
+                </view>
+            </view>
         </scroll-view>
     </view>
 </view>

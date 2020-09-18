@@ -1,3 +1,5 @@
+<view class="back">
+</view>
 <view class="container">
     <view class="cover1"></view>
     <view class="cover2"></view>

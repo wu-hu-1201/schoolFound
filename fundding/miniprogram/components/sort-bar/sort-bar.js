@@ -1,13 +1,10 @@
-// components/thingItem/thingItem.js
+// components/sort-bar/sort-bar.js
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
-    des:{
-      type: Object,
-      value: {}
-    }
+
   },
 
   /**
@@ -21,10 +18,6 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    goDetail: function() {
-      wx.navigateTo({
-        url: `../detail/detail`
-      })
-    }
+
   }
 })

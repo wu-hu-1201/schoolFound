@@ -1,8 +1,19 @@
 /* miniprogram/pages/release/release.wxss */
+.back {
+    width: 100%;
+    height: 9vh;
+    background: #32B4FF;
+}
 .main{
     width: 100%;
-    height: 100vh;
+    height: 91vh;
     display: flex;
+}
+.back-img {
+    width: 40rpx;
+    height: 40rpx;
+    margin-top: 76rpx;
+    margin-left: 30rpx;
 }
 .background {
     position: fixed;
