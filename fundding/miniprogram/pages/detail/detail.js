@@ -6,19 +6,7 @@ Page({
    */
   data: {
     detail: [
-      {
-        photo: '../../images/info-logo1.png',
-        test: '金龙啊，我在上次吃饭的地方捡到了你的伞，就在浏阳蒸菜馆里面捡到的，看到了联系我来拿哦，我的联系QQ是：1871516072',
-        // images: [
-        //   {img: '../../images/sort-u.png'}
-        // ],
-        time: '2020/09/15 13:14',
-        images: [
-          {img: '../../images/sort-u.png'},
-          {img: '../../images/sort-b.png'},
-          {img: '../../images/sort-c.png'}
-        ]
-      }
+      
     ]
   },
 
@@ -26,7 +14,22 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options._id)
+    var _id = options._id
+    wx.cloud.callFunction({
+      name:'getDetail',
+      data: {
+        _id: _id,
+      }     
+    }).then(res => {
+      let list = [] 
+      list.push(res.result.data)
+      this.setData({
+        detail: list
+      })
+      console.log(res.result.data)
+    })
+      
   },
 
   /**

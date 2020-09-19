@@ -5,8 +5,8 @@ Component({
    */
   properties: {
     detail: {
-      type: Object,
-      value: {}
+      type: Array,
+      value: []
     }
   },
 
@@ -30,5 +30,21 @@ Component({
         delta: 0
       });
     }
+  },
+
+  lifetimes: {
+    attached: function() {
+      // wx.cloud.callFunction({
+      //   name:'getDetail',
+      //   data: {
+      //     kind: 'lost',
+      //     tag: e.target.dataset.tag,
+      //   }     
+      // }).then(res => {
+      //   this.setData({
+      //     selectCategory: res.result
+      //   })
+      
+    },
   }
 })

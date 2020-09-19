@@ -13,11 +13,11 @@
                 <view class="title">我的发布</view>    
             </view>
             <view class="item-release">
-                <view class="content" wx:for="{{releaseList}}" wx:key="index">  
+                <view class="content" wx:for="{{releaseList}}" wx:key="index"  bindtap="goDetail" data-_id="{{item._id}}">  
                     <view class="left item">
                         <view class="date">{{item.date}}</view>
                     </view>
-                    <view class="right item" data-_id="{{item._id}}" bindtap="goDetail">
+                    <view class="right item" >
                         <view class="intro">{{item.intro}}</view>
                     </view>
 

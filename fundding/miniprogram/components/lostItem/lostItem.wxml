@@ -1,21 +1,18 @@
 <view class="content">
-    <view class="content-box" wx:for="{{LostList}}" wx:key="index">
-        <view class="content-item" data-_id="{{item._id}}" bindtap="goDetail">
-            <view class="left">
-                <image class="img" src="{{item.img}}" />
+    <view class="content-item" wx:for="{{LostList}}" wx:key="index" data-_id="{{item._id}}" bindtap="goDetail">
+        <view class="left">
+            <image class="img" src="{{item.images[0].url}}"/>
+        </view>
+        <view class="right">
+            <view class="title">{{item.title}}</view>
+            <view class="intro">{{item.intro}}</view>
+            <view class="tag">
+                <span class="item">{{item.tag}}</span>
             </view>
-            <view class="right">
-                <view class="title">{{item.title}}</view>
-                <view class="intro">{{item.intro}}</view>
-                <view class="tag">
-                    <span class="item">{{item.categoryTag}}</span>
-                </view>
-                <view class="right-foot">
-                    <view class="user">
-                        <image class="avatar" src="{{item.avat}}" />
-                        <span class="author">{{item.upName}}</span>
-                    </view>
-                    <span class="date">{{item.date}}</span>
+            <view class="right-foot">
+                <view class="user">
+                    <image class="avatar" src="{{item.avatar}}" />
+                    <span class="author">{{item.name}}</span>
                 </view>
             </view>
         </view>

@@ -1,3 +1,8 @@
+const utils = require('../../common/utils')
+
+import Notify from '../../miniprogram_npm/@vant/weapp/notify/notify';
+
+
 // miniprogram/pages/release/release.js
 Page({
 
@@ -5,6 +10,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    zIndex: 1000,
+    isWarning: 0,
     fileList: [],
     show: false,
     isSelect: 0,
@@ -36,7 +43,7 @@ Page({
       }
     ],
     selectCon: '点击选择发布物品的类别',
-    kind: '',
+    kind: 'lost',
     titleValue: '',
     introValue: ''
 
@@ -48,18 +55,36 @@ Page({
       delta: 0
     });
   },
+
   titleInput:function(e){
     console.log(e.detail.value)
     this.setData({
       titleValue: e.detail.value
     })
+    if(this.data.titleValue == ''){
+      this.setData({
+        isWarning: 1
+      })
+    } else {
+      this.setData({
+        isWarning: 0
+      })
+    }
   },
   introInput:function(e){
     console.log(e.detail.value)
-
     this.setData({
       introValue: e.detail.value
     })
+    if(this.data.introValue == ''){
+      this.setData({
+        isWarning: 3
+      })
+    } else {
+      this.setData({
+        isWarning: 0
+      })
+    }
   },
   switchSelect:function(event){
     console.log(event.currentTarget.dataset.id)
@@ -86,6 +111,16 @@ Page({
     fileList.push({url:file.path});
     this.setData({fileList})
     console.log(fileList)
+    if(!this.data.fileList.length){
+      this.setData({
+        isWarning: 4
+      })
+    } else {
+      this.setData({
+        isWarning: 0
+      })
+    }
+
   },
   delete:function(event) {
     console.log(event)
@@ -96,29 +131,49 @@ Page({
     this.setData({
         fileList
     })
+    if(!this.data.fileList.length){
+      this.setData({
+        isWarning: 4
+      })
+    } else {
+      this.setData({
+        isWarning: 0
+      })
+    }
   },
   selectType:function() {
     this.setData({ show: true });
-
   },
 
   onCancel() {
     setTimeout(() => {
       this.setData({ show: false });
-
-    }, 200)
+    }, 1)
+  },
+  onClickOverlay(){
+    setTimeout(() => {
+      this.setData({ show: false });
+    }, 1)
   },
   onSelect(event) {
     console.log(event.detail);
     let selectCon = event.detail.name
-
     setTimeout(() => {
       this.setData({ 
         show: false,
         selectCon: selectCon
       });
+      if(this.data.selectCon == '点击选择发布物品的类别'){
+        this.setData({
+          isWarning: 2
+        })
+      } else {
+        this.setData({
+          isWarning: 0
+        })
+      }
 
-    }, 200)
+    }, 1)
     
   },
 
@@ -126,22 +181,65 @@ Page({
 
   //调用云函数,把发布的数据添加到数据库里
   release: function () {
+    let date = utils.getNowFormatDate()
     const self = this
-    wx.cloud.callFunction({
-      name:'release',
-      data: {
-        Images: self.data.fileList,
-        tag: self.data.selectCon,
-        kind: self.data.kind,
-        title: self.data.titleValue,
-        intro: self.data.introValue,
-        fileList: self.data.fileList,
-
-      },
-      success(res) {
+    if(this.data.titleValue && this.data.introValue && this.data.selectCon != '点击选择发布物品的类别' &&  this.data.fileList.length) {
+      wx.cloud.callFunction({
+        name:'release',
+        data: {
+          images: self.data.fileList,
+          tag: self.data.selectCon,
+          kind: self.data.kind,
+          title: self.data.titleValue,
+          intro: self.data.introValue,
+          date: date
+        }     
+      }).then(res => {
         console.log(res)
+      })
+      Notify({ type: 'success', message: '发布成功啦',safeAreaInsetTop:true });
+      setTimeout(() => {
+        wx.switchTab({
+          url: '../lost/lost'
+        });
+      }, 3000)
+      
+      return
+    } else {
+      if (this.data.titleValue == '') {
+        Notify({ type: 'warning', message: '标题不能为空哟' ,safeAreaInsetTop:true});
+        this.setData({
+          isWarning: 1
+        })
+        return
       }
-    })
+      if (this.data.selectCon == '点击选择发布物品的类别') {
+        Notify({ type: 'warning', message: '🏷标签一定要选哦~' ,safeAreaInsetTop:true});
+        this.setData({
+          isWarning: 2
+        })
+        return
+      }
+      if (this.data.introValue == '') {
+        Notify({ type: 'warning', message: '简介可不能为空哟' ,safeAreaInsetTop:true});
+        this.setData({
+          isWarning: 3
+        })
+        return
+      }
+      if (!this.data.fileList.length) {
+        Notify({ type: 'warning', message: '图片至少一张呢',safeAreaInsetTop:true });
+        this.setData({
+          isWarning: 4
+        })
+        return
+      }
+    }
+    
+    
+    
+
+    
   },
   /**
    * 生命周期函数--监听页面加载

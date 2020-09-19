@@ -1,9 +1,5 @@
 {
-<<<<<<< HEAD:fundding/cloudfunctions/createUser/package.json
-  "name": "createUser",
-=======
-  "name": "getSearchResult",
->>>>>>> eadd7ef153e4b970650c405c5769311e5ae7c2b9:fundding/cloudfunctions/getSearchResult/package.json
+  "name": "getMyRelease",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
