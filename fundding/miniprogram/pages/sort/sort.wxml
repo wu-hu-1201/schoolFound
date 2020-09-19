@@ -2,6 +2,7 @@
 <!-- 分类界面 -->
 <!-- 搜索框 -->
 <view class="{{showSort? 'wrapper' : 'hide'}}">
+    <image class="sort-bg" src="../../images/sort01.jpg"/>
     <view class="quiet">
         <view class="top-block"></view>
         <view class="water">
@@ -28,9 +29,9 @@
     </view>
     <!-- 搜索建议 -->
     <view class="{{showSuggest ? 'search_suggest' : 'hide'}}">
-        <view wx:for="{{searchSuggest}}" wx:key="index" class='search_result' data-value='{{item.keyword}} ' bindtap='fill_value'>
+        <view wx:for="{{searchSuggest}}" wx:key="index" class='search_result' data-value='{{item.title}} ' bindtap='fill_value'>
             <image class="search-pic" src="../../images/sort-search.png"></image>
-            <view class="search_suggest_name">{{item.keyword}}</view>
+            <view class="search_suggest_name">{{item.title}}</view>
         </view>
     </view>
     <!-- 搜索历史 -->
@@ -57,17 +58,16 @@
     <!-- 物品类标题栏 -->
     <view class="{{showView? 'group' : 'hide'}}" wx:for="{{allThing}}" wx:key="index">
         <view class="top">
-            <text class="title">{{item.title}}</text>
-            <view class="moreLook" data-title="{{item.title}}" bindtap="lookInfo">
+            <text class="title">{{item.tag}}</text>
+            <view class="moreLook" data-tag="{{item.tag}}" bindtap="lookInfo">
                 <image class="more" src="../../images/sort-back.png" />
-                <text class="look">查看更多</text>
             </view>
         </view>
         <scroll-view class="{{showView? 'scroll-view_thing' : 'hide'}}" scroll-x="{{true}}">
-            <view class="item" bindtap="goDetail" wx:for="{{item.des}}" wx:key="index" wx:for-item="des">
-                <view class="info">
+            <view class="item" wx:for="{{item.des}}" wx:key="index" wx:for-item="des">
+                <view class="info" data-_id="{{des._id}}" bindtap="goDetail">
                     <image class="imag" src="{{des.pic}}"></image>
-                    <view class="name">{{des.place}}</view>
+                    <view class="name">{{des.title}}</view>
                     <view class="time">{{des.time}}</view>
                 </view>
             </view>

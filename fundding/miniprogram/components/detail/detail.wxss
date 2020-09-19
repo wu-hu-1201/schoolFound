@@ -15,13 +15,13 @@
     z-index: 1;
 }
 .wrapper-box {
-    margin-top: 380rpx;
+    margin-top: 250rpx;
 }
 
 
 .time {
     position: absolute;
-    margin-top: -350rpx;
+    margin-top: -200rpx;
     text-align: center;
     margin-left: 300rpx;
 

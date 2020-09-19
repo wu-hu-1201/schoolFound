@@ -13,14 +13,16 @@
     </view>
 </view>
 <scroll-view class="wrapper">
-    <view class="group" wx:for="{{kind}}" wx:key="index" bindtap="goDetail">
-        <image class="group-img" src="{{item.img}}" />
-        <view class="des">
-            <view class="title">
-                <text>{{item.title}}</text>
-            </view>
-            <view class="test">
-                <text class="test-t">{{item.test}}</text>
+    <view class="group" wx:for="{{kind}}" wx:key="index">
+        <view class="grou-box" data-_id="{{item._id}}" bindtap="goDetail">
+            <image class="group-img" src="{{item.img}}" />
+            <view class="des">
+                <view class="title">
+                    <text>{{item.title}}</text>
+                </view>
+                <view class="test">
+                    <text class="test-t">{{item.test}}</text>
+                </view>
             </view>
         </view>
     </view>

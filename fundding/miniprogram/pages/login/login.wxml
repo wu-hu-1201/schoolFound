@@ -18,12 +18,7 @@
             leave-active-class="van-leave-active-class"
             leave-to-class="van-leave-to-class"> -->
         <view class="login-wrapper" >
-            <view class="login-box">
-                
-<button class="button-box" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" ><text>Experiencing now</text></button>
-
-
-            </view>
+            <button class="button-box" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" ><text>Experiencing now</text></button>
         </view>
         <!-- </van-transition> -->
     </view>

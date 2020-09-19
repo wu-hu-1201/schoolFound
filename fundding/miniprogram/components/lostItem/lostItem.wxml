@@ -1,5 +1,5 @@
 <view class="content">
-    <view class="content-item" wx:for="{{LostList}}" wx:key="index" >
+    <view class="content-item" wx:for="{{LostList}}" wx:key="index" data-_id="{{item._id}}" bindtap="goDetail">
         <view class="left">
             <image class="img" src="{{item.images[0].url}}"/>
         </view>
@@ -14,8 +14,7 @@
                     <image class="avatar" src="{{item.avatar}}" />
                     <span class="author">{{item.name}}</span>
                 </view>
-                <span class="date">{{item.date}}</span> 
             </view>
-        </view>    
+        </view>
     </view>
 </view>

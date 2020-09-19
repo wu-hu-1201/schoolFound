@@ -17,7 +17,7 @@
                     <view class="left item">
                         <view class="date">{{item.date}}</view>
                     </view>
-                    <view class="right item">
+                    <view class="right item" data-_id="{{item._id}}" bindtap="goDetail">
                         <view class="intro">{{item.intro}}</view>
                     </view>
 
