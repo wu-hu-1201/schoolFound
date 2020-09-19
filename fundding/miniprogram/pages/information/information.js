@@ -5,110 +5,32 @@ Page({
    * 页面的初始数据
    */
   data: {
-    imageNum: true,
-    isLeft: true,
-    showNew: true,
-    showOld: false,
-    oldTime: [
+    kind: [
       {
-        img: '../../images/sort-c.png',
-        time: '2020-9-10',
-        place: '东华路靠近北区篮球场',
-        logo: '../../images/info-logo2.png'
+        img: '../../images/sort-b.png',
+        title: '遗失的书',
+        test: '我在上次吃饭的地方捡到了你的伞，就在浏阳蒸菜馆里面捡到的，看到了联系我来拿哦，我的联系QQ是：1871516072'
       },
       {
         img: '../../images/sort-b.png',
-        time: '2020-9-10',
-        place: '东华路靠近北区篮球场',
-        logo: '../../images/info-logo1.png'
+        title: '遗失的书',
+        test: '金龙啊，我在上次吃饭的地方捡到了你的伞，就在浏阳蒸菜馆里面捡到的，看到了联系我来拿哦，我的联系QQ是：1871516072'
       },
       {
         img: '../../images/sort-u.png',
-        time: '2020-9-10',
-        place: '东华路靠近北区篮球场',
-        logo: '../../images/info-logo2.png'
+        title: '遗失的书',
+        test: '金龙啊，我在上次吃饭的地方捡到了你的伞，就在浏阳蒸菜馆里面捡到的，看到了联系我来拿哦，我的联系QQ是：1871516072'
       },
       {
         img: '../../images/sort-bag.png',
-        time: '2020-9-10',
-        place: '东华路靠近北区篮球场',
-        logo: '../../images/info-logo1.png'
+        title: '遗失的书',
+        test: '金龙啊，我在上次吃饭的地方捡到了你的伞，就在浏阳蒸菜馆里面捡到的，看到了联系我来拿哦，我的联系QQ是：1871516072'
+      },
+      {
+        img: '../../images/sort-c.png',
+        title: '遗失的书',
+        test: '金龙啊，我在上次吃饭的地方捡到了你的伞，就在浏阳蒸菜馆里面捡到的，看到了联系我来拿哦，我的联系QQ是：1871516072'
       }
-    ],
-    newTime: [
-      // {
-      //   test: '金龙啊，我在上次吃饭的地方捡到了你的伞，就在浏阳蒸菜馆里面捡到的，看到了联系我来拿哦，我的联系QQ是：1871516072',
-      //   logo: '../../images/info-logo1.png',
-      //   author: 'Little丶元',
-      //   authorTime: '2020-09-14',
-      //   images: [
-      //     {
-      //       img: '../../images/sort-u.png'
-      //     }
-      //   ]
-      // },
-      {
-        test: '金龙啊，我在上次吃饭的地方捡到了你的伞，就在浏阳蒸菜馆里面捡到的，看到了联系我来拿哦，我的联系QQ是：1871516072',
-        logo: '../../images/info-logo2.png',
-        author: 'Little丶元',
-        authorTime: '2020-09-14',
-        images: [
-          {
-            img: '../../images/sort-c.png'
-          },
-          {
-            img: '../../images/sort-b.png'
-          },
-          {
-            img: '../../images/sort-u.png'
-          }
-        ]
-      },
-      {
-        test: '金龙啊，我在上次吃饭的地方捡到了你的伞，就在浏阳蒸菜馆里面捡到的，看到了联系我来拿哦，我的联系QQ是：1871516072',
-        logo: '../../images/info-logo2.png',
-        author: 'Little丶元',
-        authorTime: '2020-09-14',
-        images: [
-          {
-            img: '../../images/sort-c.png'
-          },
-          {
-            img: '../../images/sort-b.png'
-          },
-          {
-            img: '../../images/sort-u.png'
-          }
-        ]
-      },
-      {
-        test: '金龙啊，我在上次吃饭的地方捡到了你的伞，就在浏阳蒸菜馆里面捡到的，看到了联系我来拿哦，我的联系QQ是：1871516072',
-        logo: '../../images/info-logo2.png',
-        author: 'Little丶元',
-        authorTime: '2020-09-14',
-        images: [
-          {
-            img: '../../images/sort-c.png'
-          },
-          {
-            img: '../../images/sort-b.png'
-          },
-          {
-            img: '../../images/sort-u.png'
-          }
-        ]
-      },
-      // {
-      //   test: '金龙啊，我在上次吃饭的地方捡到了你的伞，就在浏阳蒸菜馆里面捡到的，看到了联系我来拿哦，我的联系QQ是：1871516072',
-      //   logo: '../../images/info-logo1.png',
-      //   author: 'Little丶元',
-      //   authorTime: '2020-09-14',
-      //   images: [
-      //     {
-      //       img: '../../images/sort-b.png'
-      //     }
-      //   ]
-      // },
     ]
   },
 
@@ -123,21 +45,19 @@ Page({
 
   },
 
-  tabChangeNew(){
-    this.setData({
-      isLeft: true,
-      showNew: true,
-      showOld: false
+
+  back: function() {
+    wx.navigateBack({
+      delta: 0
+    });
+  },
+
+  goDetail: function() {
+    wx.navigateTo({
+      url: `../detail/detail`
     })
   },
 
-  tabChangeOld(){
-    this.setData({
-      isLeft: false,
-      showNew: false,
-      showOld: true
-    })
-  }, 
 
 
   /**

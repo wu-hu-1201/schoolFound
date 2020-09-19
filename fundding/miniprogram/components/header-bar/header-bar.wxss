@@ -1,0 +1,10 @@
+/* components/header-bar/header-bar.wxss */
+/* .backgroung {
+    width: 100vh;
+    height: 100vh;
+} */
+.bg-img {
+    width: 100vh;
+    height: 900rpx;
+    border-radius: 70%;
+}

@@ -1,9 +1,22 @@
 /* miniprogram/pages/release/release.wxss */
+.back {
+    width: 100%;
+    height: 9vh;
+    background: #002859;
+}
 .main{
     width: 100%;
-    height: 100vh;
+    height: 91vh;
     display: flex;
 }
+.back-img {
+    width: 40rpx;
+    height: 40rpx;
+    margin-top: 76rpx;
+    margin-left: 30rpx;
+}
+
+
 .background {
     position: fixed;
     width: 100%;
@@ -14,21 +27,23 @@
 .main .container {
     background: linear-gradient(to bottom right, rgba(0,40,89, .5), rgba(35,109,134,.5));
     width: 88%;
+
     height: 1075rpx;
     display: flex;
     margin: 0 auto; 
-    z-index: 1075;
+
     margin-top: 50rpx;
     flex-direction: column;
 }
 .main .container .wrapper { 
-    width: 80%;
+    width: 85%;
     height: 85%;
     margin: 80rpx auto 50rpx;
     display: flex;
     flex-direction: column;
 
 }
+
 .main .container .wrapper .wrapper-header {
     display: flex;
     justify-content: space-between;
@@ -42,6 +57,7 @@
     letter-spacing: 3rpx;
     font-size: 40rpx;
     color: #a0a0a0;
+    z-index: 300;
 
 }
 .main .container .wrapper .wrapper-header .item.isselect{
@@ -79,6 +95,11 @@
     margin-left: 25prx;
     color: #fff;
 }
+.main .container .wrapper .wrapper-content .item-un .text.warning,
+.main .container .wrapper .wrapper-content .item .title.fs.warning{
+    color: rgba(255,151,106, .9);
+}
+
 .main .container .wrapper .wrapper-content .item .fs {
     color: #a0a0a0;
     letter-spacing: 1rpx;
@@ -91,9 +112,15 @@
 .main .container .wrapper .wrapper-content .item .text {
     border-bottom: 1px solid #ffffff;
     color: #ffffff;
-    padding-bottom: 10prx;
+    padding: 30prx;
 }
-
+.h120{
+    height: 120rpx;
+}
+.main .container .wrapper .wrapper-content .item .text.warning,
+.main .container .wrapper .wrapper-content .item .textarea.warning{
+    border: 2px solid rgba(255,151,106, .9);
+}
 .main .container .wrapper .wrapper-content .item .textarea{
     color: #fff;
     width: 100%;
@@ -104,7 +131,9 @@
     display: flex;
     flex-wrap: nowrap;
 }
-
+.van-action-sheet__cancel{
+    z-index:10000;
+}
 .release {
     width: 100%;
     height: 70rpx;
@@ -113,7 +142,4 @@
     background-color:#BF406B;
     color: #fff;
 
-    /* position: fixed;
-    left: 50%;
-    transform: translate(-50%, -50%) */
 }

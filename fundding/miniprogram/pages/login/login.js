@@ -1,5 +1,5 @@
 // miniprogram/pages/login/login.js
-const utils = require('../../common/utils')
+
 Page({
 
   /**
@@ -8,7 +8,6 @@ Page({
   data: {
 
   },
-  
   bindGetUserInfo:function(){
     const self = this
     // 查看是否授权
@@ -36,8 +35,19 @@ Page({
       fail: () => {},
       complete: () => {}
     })
+    wx.switchTab({
+      url: '../lost/lost',
+    })
   },
   
+
+  // goIndex: function() {
+  //   console.log('e')
+  //   wx.switchTab({
+  //     url: '../lost/lost',
+  //   })
+  // },
+
   /** 
    * 生命周期函数--监听页面加载
    */
@@ -94,3 +104,5 @@ Page({
 
   }
 })
+
+

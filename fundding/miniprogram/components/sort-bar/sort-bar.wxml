@@ -1,0 +1,4 @@
+<!--components/sort-bar/sort-bar.wxml-->
+<view class="backgroung">
+    <image class="bg-img" src="../../images/sort-bg.jpg"/>
+</view>

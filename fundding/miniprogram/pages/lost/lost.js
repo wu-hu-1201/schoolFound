@@ -61,38 +61,66 @@ Page({
       '全部',
       '证件',
       '书籍',
-      '贵重物品',
+      '伞',
       '其他'
     ],
     clickNum: 0,
-    selectCategory: []
+    selectCategory: [],
+    selectCategory0: [],
+    selectCategory1: [],
+    selectCategory2: [],
+    selectCategory3: [],
+    selectCategory4: []
     
   },
 
   // 点击展示不同类型的物品
   clickSelected: function (e) {
-    if( !this.data.LostList) {
-      return
-    }
-    let array = []
-    this.data.LostList.forEach((item) => {
-      if(e.target.dataset.num != 0){
-        if(item.categoryTag == this.data.categoryList[e.target.dataset.num] ) {
-          array.push(item)
-          console.log('11')
-        } 
-      // }else if ( this.data.categoryList[e.target.dataset.num] == '其他' || item.categoryTag === '其他' || item.categoryTag !== '证件' || item.categoryTag !== '书籍'|| item.categoryTag !== '贵重物品') {
-      //     array.push(item)
-      //   }
-      } else {
-        array.push(item)
-        console.log('111')
-      }
-    })
+
+    //先跳转
     this.setData({
       clickNum: e.target.dataset.num,
-      selectCategory: array
     })
+
+    wx.cloud.callFunction({
+      name:'getList',
+      data: {
+        kind: 'lost',
+        tag: e.target.dataset.tag,
+      }     
+    }).then(res => {
+      this.setData({
+        selectCategory: res.result
+      })
+      //把数据从后台缓存下来
+      if (e.target.dataset.tag =='全部') {
+        this.setData({
+          selectCategory0: this.data.selectCategory
+        })
+      }
+      if (e.target.dataset.tag == '证件') {
+        this.setData({
+          selectCategory1: this.data.selectCategory
+        })
+      }
+      if (e.target.dataset.tag == '书籍') {
+        this.setData({
+          selectCategory2: this.data.selectCategory
+        })
+      }
+      if (e.target.dataset.tag == '伞') {
+        this.setData({
+          selectCategory3: this.data.selectCategory
+        })
+      }
+      if (e.target.dataset.tag == '其他') {
+        this.setData({
+          selectCategory4: this.data.selectCategory
+        })
+      }
+      
+    })
+   
   },
 
   //跳转进入发布页面
@@ -128,9 +156,83 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    //数据更新并缓存
+    if(!this.data.selectCategory0.length) {
+      wx.cloud.callFunction({
+        name:'getList',
+        data: {
+          kind: 'lost',
+          tag: '全部',
+        }     
+      }).then(res => {
+        this.setData({
+          selectCategory: res.result,
+          selectCategory0: res.result
+        })
+      })
+    }
+    if(!this.data.selectCategory1.length) {
+      wx.cloud.callFunction({
+        name:'getList',
+        data: {
+          kind: 'lost',
+          tag: '证件',
+        }     
+      }).then(res => {
+        this.setData({
+          selectCategory: res.result,
+          selectCategory1: res.result
+        })
+      })
+    }
+    if(!this.data.selectCategory2.length) {
+      wx.cloud.callFunction({
+        name:'getList',
+        data: {
+          kind: 'lost',
+          tag: '书籍',
+        }     
+      }).then(res => {
+        this.setData({
+          selectCategory: res.result,
+          selectCategory2: res.result
+        })
+      })
+    }
+    if(!this.data.selectCategory3.length) {
+      wx.cloud.callFunction({
+        name:'getList',
+        data: {
+          kind: 'lost',
+          tag: '伞',
+        }     
+      }).then(res => {
+        this.setData({
+          selectCategory: res.result,
+          selectCategory3: res.result
+        })
+      })
+    }
+    if(!this.data.selectCategory4.length) {
+      wx.cloud.callFunction({
+        name:'getList',
+        data: {
+          kind: 'lost',
+          tag: '其他',
+        }     
+      }).then(res => {
+        this.setData({
+          selectCategory: res.result,
+          selectCategory4: res.result
+        })
+      })
+    }
+
+  
     this.setData({
-      selectCategory: this.data.LostList
+      selectCategory: this.data.selectCategory0
     })
+    
   },
 
   /**

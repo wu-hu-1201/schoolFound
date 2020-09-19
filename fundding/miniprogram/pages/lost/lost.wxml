@@ -23,6 +23,7 @@
             class="item {{ clickNum == index? 'selected' : ''}}" 
             bindtap="clickSelected"  
             data-num="{{index}}" 
+            data-tag="{{item}}" 
             wx:for="{{categoryList}}" 
             wx:key="index"
             >
