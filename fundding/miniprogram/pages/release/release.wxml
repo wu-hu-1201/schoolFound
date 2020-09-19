@@ -29,7 +29,7 @@
                     <van-icon name="arrow" class="arrow" />
                     <span class="text {{isWarning == 2? 'warning' : ''}}">{{selectCon}}</span>
                     <van-action-sheet 
-                    z-index="10000"
+                    z-index="{{zIndex}}"
                     show="{{ show }}" 
                     actions="{{ actions }}" 
                     cancel-text="取消" 

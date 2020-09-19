@@ -8,7 +8,7 @@
         <view class="wrapper-box" wx:for="{{detail}}" wx:key="index">
             <view class="time">
                 <view class="timeNum">
-                    <text>{{item.time}}</text>
+                    <text>{{item.date}}</text>
                 </view>
                 <view class="timeName">
                     <text>发布于</text>
@@ -16,16 +16,16 @@
             </view>
             <view class="des-box">
                 <view class="title">
-                    <image class="photo" src="{{item.photo}}" />
+                    <image class="photo" src="{{item.avatar}}" />
                     <text class="name">Mr.yuan</text>
                 </view>
                 <view class="logo-box">
-                    <text class="logo">雨伞</text>
+                    <text class="logo">{{item.tag}}</text>
                 </view>
-                <view class="test">{{item.test}}</view>
+                <view class="test">{{item.intro}}</view>
                 <swiper class="swiper-box" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}">
                     <swiper-item class="" wx:for="{{item.images}}" wx:key="index" wx:for-item="images">
-                        <image class="slide-image" src="{{images.img}}" />
+                        <image class="slide-image" src="{{images.url}}" />
                     </swiper-item>
                 </swiper>
             </view>

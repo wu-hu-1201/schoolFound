@@ -6,26 +6,6 @@ Page({
    */
   data: {
     releaseList: [
-      {
-        title: '寻找遗失的雨伞',
-        intro: '今天下午两代年左右弄丢了这把黑色雨伞,有好心人捡到能通知我一声',
-        date: '2020/9/9'
-      },
-      {
-        title: '寻找遗失的雨伞',
-        intro: '今天下午两代年左右弄丢了这把黑色雨伞,有好心人捡到能通知我一声',
-        date: '2020/9/9'
-      },
-      {
-        title: '寻找遗失的雨伞',
-        intro: '今天下午两代年左右弄丢了这把黑色雨伞,有好心人捡到能通知我一声',
-        date: '2020/9/9'
-      },
-      {
-        title: '寻找遗失的雨伞',
-        intro: '今天下午两代年左右弄',
-        date: '2020/9/9'
-      }
     ]
   },
 
@@ -48,7 +28,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    wx.cloud.callFunction({
+      name:'getMyRelease',
+      data: {
+      }     
+    }).then(res => {
+      this.setData({
+        releaseList: res.result.data
+      })
+    })
   },
 
   /**

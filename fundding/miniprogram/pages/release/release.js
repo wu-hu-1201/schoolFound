@@ -10,6 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    zIndex: 1000,
     isWarning: 0,
     fileList: [],
     show: false,
@@ -196,7 +197,7 @@ Page({
       }).then(res => {
         console.log(res)
       })
-      Notify({ type: 'success', message: '发布成功啦' });
+      Notify({ type: 'success', message: '发布成功啦',safeAreaInsetTop:true });
       setTimeout(() => {
         wx.switchTab({
           url: '../lost/lost'
@@ -206,28 +207,28 @@ Page({
       return
     } else {
       if (this.data.titleValue == '') {
-        Notify({ type: 'warning', message: '标题不能为空哟' });
+        Notify({ type: 'warning', message: '标题不能为空哟' ,safeAreaInsetTop:true});
         this.setData({
           isWarning: 1
         })
         return
       }
       if (this.data.selectCon == '点击选择发布物品的类别') {
-        Notify({ type: 'warning', message: '🏷标签一定要选哦~' });
+        Notify({ type: 'warning', message: '🏷标签一定要选哦~' ,safeAreaInsetTop:true});
         this.setData({
           isWarning: 2
         })
         return
       }
       if (this.data.introValue == '') {
-        Notify({ type: 'warning', message: '简介可不能为空哟' });
+        Notify({ type: 'warning', message: '简介可不能为空哟' ,safeAreaInsetTop:true});
         this.setData({
           isWarning: 3
         })
         return
       }
       if (!this.data.fileList.length) {
-        Notify({ type: 'warning', message: '图片至少一张呢' });
+        Notify({ type: 'warning', message: '图片至少一张呢',safeAreaInsetTop:true });
         this.setData({
           isWarning: 4
         })

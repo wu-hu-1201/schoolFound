@@ -22,7 +22,6 @@ Component({
    */
   methods: {
     goDetail: function(e) {
-      console.log(e)
       wx.navigateTo({
         url: `../detail/detail?_id=${e.currentTarget.dataset._id}`
       })

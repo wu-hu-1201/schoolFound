@@ -5,63 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    LostList: [
-      {
-        _id: '0',
-        img: '../../images/sort-u.png',
-        kind: 'lost',
-        title: '寻找遗失的雨伞',
-        categoryTag: '其他',
-        intro:'今天下午两代年左右弄丢了这把黑色雨伞,有好心人捡到能通知我一声',
-        upName: '金龙',
-        date: '2020/9/9',
-        avat: '../../images/sort-u.png',
-      },
-      {
-        _id: '1',
-        img: '../../images/sort-u.png',
-        kind: 'lost',
-        title: '寻找遗失的雨伞asdasdasdaaaaaa',
-        categoryTag: '其他',
-        intro:'今天下午两代年左右弄丢了这把黑色雨伞,有好心人捡到能通知我一声',
-        upName: '金龙',
-        date: '2020/9/9',
-        avat: '../../images/sort-u.png',
-      },
-      {
-        _id: '2',
-        img: '../../images/sort-c.png',
-        kind: 'lost',
-        title: '寻找遗失的雨伞',
-        categoryTag: '证件',
-        intro:'今天下午两代年左右弄丢了这把黑色雨伞,有好心人捡到能通知我一声',
-        upName: '金龙',
-        date: '2020/9/9',
-        avat: '../../images/sort-u.png',
-      },
-      {
-        _id: '3',
-        img: '../../images/sort-bag.png',
-        kind: 'lost',
-        title: '寻找遗失的雨伞',
-        categoryTag: '贵重物品',
-        intro:'今天下午两代年左右弄丢了这把黑色雨伞,有好心人捡到能通知我一声',
-        upName: '金龙',
-        date: '2020/9/9',
-        avat: '../../images/sort-u.png',
-      },
-      {
-        _id: '4',
-        img: '../../images/sort-b.png',
-        kind: 'book',
-        title: '寻找遗失的雨伞',
-        categoryTag: '书籍',
-        intro:'今天下午两代年左右弄丢了这把黑色雨伞,有好心人捡到能通知我一声',
-        upName: '金龙',
-        date: '2020/9/9',
-        avat: '../../images/sort-u.png',
-      }
-    ],
+
     categoryList: [
       '全部',
       '证件',
@@ -97,6 +41,7 @@ Page({
       this.setData({
         selectCategory: res.result
       })
+    })
       //把数据从后台缓存下来
       if (e.target.dataset.tag =='全部') {
         this.setData({
@@ -124,7 +69,7 @@ Page({
         })
       }
       
-    })
+    
    
   },
 
@@ -135,12 +80,7 @@ Page({
     })
 
   },
-  change(){
-    wx.setNavigationBarColor({
-      backgroundColor: '#7AB9E2',
-      frontColor: '#ffffff'
-    })
-  },
+
 
   /**
    * 生命周期函数--监听页面加载
@@ -160,7 +100,67 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.setData({
+      clickNum: 0
+    })
     //数据更新并缓存
+    
+    if(!this.data.selectCategory1.length) {
+      wx.cloud.callFunction({
+        name:'getList',
+        data: {
+          kind: 'lost',
+          tag: '证件',
+        }     
+      }).then(res => {
+        this.setData({
+          // selectCategory: res.result,
+          selectCategory1: res.result
+        })
+      })
+    }
+    if(!this.data.selectCategory2.length) {
+      wx.cloud.callFunction({
+        name:'getList',
+        data: {
+          kind: 'lost',
+          tag: '书籍',
+        }     
+      }).then(res => {
+        this.setData({
+          // selectCategory: res.result,
+          selectCategory2: res.result
+        })
+      })
+    }
+    if(!this.data.selectCategory3.length) {
+      wx.cloud.callFunction({
+        name:'getList',
+        data: {
+          kind: 'lost',
+          tag: '伞',
+        }     
+      }).then(res => {
+        this.setData({
+          // selectCategory: res.result,
+          selectCategory3: res.result
+        })
+      })
+    }
+    if(!this.data.selectCategory4.length) {
+      wx.cloud.callFunction({
+        name:'getList',
+        data: {
+          kind: 'lost',
+          tag: '其他',
+        }     
+      }).then(res => {
+        this.setData({
+          // selectCategory: res.result,
+          selectCategory4: res.result
+        })
+      })
+    }
     if(!this.data.selectCategory0.length) {
       wx.cloud.callFunction({
         name:'getList',
@@ -175,67 +175,9 @@ Page({
         })
       })
     }
-    if(!this.data.selectCategory1.length) {
-      wx.cloud.callFunction({
-        name:'getList',
-        data: {
-          kind: 'lost',
-          tag: '证件',
-        }     
-      }).then(res => {
-        this.setData({
-          selectCategory: res.result,
-          selectCategory1: res.result
-        })
-      })
-    }
-    if(!this.data.selectCategory2.length) {
-      wx.cloud.callFunction({
-        name:'getList',
-        data: {
-          kind: 'lost',
-          tag: '书籍',
-        }     
-      }).then(res => {
-        this.setData({
-          selectCategory: res.result,
-          selectCategory2: res.result
-        })
-      })
-    }
-    if(!this.data.selectCategory3.length) {
-      wx.cloud.callFunction({
-        name:'getList',
-        data: {
-          kind: 'lost',
-          tag: '伞',
-        }     
-      }).then(res => {
-        this.setData({
-          selectCategory: res.result,
-          selectCategory3: res.result
-        })
-      })
-    }
-    if(!this.data.selectCategory4.length) {
-      wx.cloud.callFunction({
-        name:'getList',
-        data: {
-          kind: 'lost',
-          tag: '其他',
-        }     
-      }).then(res => {
-        this.setData({
-          selectCategory: res.result,
-          selectCategory4: res.result
-        })
-      })
-    }
-
-  
-    this.setData({
-      selectCategory: this.data.selectCategory0
-    })
+    // this.setData({
+    //   selectCategory: this.data.selectCategory0
+    // })
     
   },
 
@@ -243,7 +185,9 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    this.setData({
+      selectCategory: this.data.selectCategory0
+    })
   },
 
   /**

@@ -1,25 +1,16 @@
 <!-- miniprogram/pages/login/login.wxml -->
 <view class="wrapper">
-    <image class="login-bg" src="../../images/login.gif" />
-    <!-- <view class="line">
-        <image src="../../images/line.png"></image>
-    </view> -->
+
     <view class="login">
-        <view class="title">
+        <!-- <view class="title">
             <text>Move the hands of love</text>
-        </view>
+        </view>-->
         <view class="test">
             <text>校园失物招领平台,找回丢失的它！</text>
-        </view>
-        <!-- <van-transition  show="{{ show }}" name="fade-up" 
-            duration="{{ { enter: 300, leave: 1000 } }}"
-            enter-class="van-enter-class"
-            enter-active-class="van-enter-active-class"
-            leave-active-class="van-leave-active-class"
-            leave-to-class="van-leave-to-class"> -->
+        </view> 
         <view class="login-wrapper" >
             <button class="button-box" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" ><text>Experiencing now</text></button>
         </view>
-        <!-- </van-transition> -->
+
     </view>
 </view>
