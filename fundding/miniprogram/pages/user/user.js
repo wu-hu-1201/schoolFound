@@ -36,6 +36,14 @@ Page({
     })
   },
 
+  // 带参进入详情界面
+  goDetail: function(e) {
+    console.log(e)
+    wx.navigateTo({
+      url: `../detail/detail?_id=${e.currentTarget.dataset._id}`
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */

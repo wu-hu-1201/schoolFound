@@ -7,6 +7,7 @@ Page({
   data: {
     LostList: [
       {
+        _id: '0',
         img: '../../images/sort-u.png',
         kind: 'lost',
         title: '寻找遗失的雨伞',
@@ -17,6 +18,7 @@ Page({
         avat: '../../images/sort-u.png',
       },
       {
+        _id: '1',
         img: '../../images/sort-u.png',
         kind: 'lost',
         title: '寻找遗失的雨伞asdasdasdaaaaaa',
@@ -27,6 +29,7 @@ Page({
         avat: '../../images/sort-u.png',
       },
       {
+        _id: '2',
         img: '../../images/sort-c.png',
         kind: 'lost',
         title: '寻找遗失的雨伞',
@@ -37,6 +40,7 @@ Page({
         avat: '../../images/sort-u.png',
       },
       {
+        _id: '3',
         img: '../../images/sort-bag.png',
         kind: 'lost',
         title: '寻找遗失的雨伞',
@@ -47,6 +51,7 @@ Page({
         avat: '../../images/sort-u.png',
       },
       {
+        _id: '4',
         img: '../../images/sort-b.png',
         kind: 'book',
         title: '寻找遗失的雨伞',

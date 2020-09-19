@@ -21,6 +21,11 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    goDetail: function(e) {
+      console.log(e)
+      wx.navigateTo({
+        url: `../detail/detail?_id=${e.currentTarget.dataset._id}`
+      })
+    },
   }
 })

@@ -1,42 +1,72 @@
 // miniprogram/pages/login/login.js
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    show: true
+
   },
-
-
-  goIndex: function() {
-    console.log('e')
+  bindGetUserInfo:function(){
+    const self = this
+    // 查看是否授权
+    wx.getSetting({
+      success: function (res) {
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+          wx.getUserInfo({
+            success: function (infoRes) {
+              var userInfo = infoRes.userInfo
+              wx.cloud.callFunction({
+                name: 'createUser',
+                data: {
+                    avatar: userInfo.avatarUrl,
+                    name: userInfo.nickName,
+                }
+              }).then(res => {
+                console.log(res)
+              })
+            }
+          })
+          
+        }
+      },
+      fail: () => {},
+      complete: () => {}
+    })
     wx.switchTab({
       url: '../lost/lost',
     })
   },
+  
 
+  // goIndex: function() {
+  //   console.log('e')
+  //   wx.switchTab({
+  //     url: '../lost/lost',
+  //   })
+  // },
 
-  /**
+  /** 
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
-  },
 
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+
   },
 
   /**
@@ -74,3 +104,5 @@ Page({
 
   }
 })
+
+

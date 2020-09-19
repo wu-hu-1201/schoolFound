@@ -39,12 +39,11 @@
     justify-content: center;
     margin-top: 500rpx;
 }
-.login-box {
+
+.button-box {
     padding: 20rpx 80rpx;
     background:turquoise;
     border-radius: 20rpx;
-}
-.login-box text {
     font-size: 28rpx;
     color: white;
 }

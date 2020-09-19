@@ -2,7 +2,7 @@
 .back {
     width: 100%;
     height: 9vh;
-    background:#7AB9E2;
+    background: #002859;
 }
 .main{
     width: 100%;
@@ -15,6 +15,8 @@
     margin-top: 76rpx;
     margin-left: 30rpx;
 }
+
+
 .background {
     position: fixed;
     width: 100%;
@@ -23,16 +25,17 @@
 }
 
 .main .container {
-    background: rgba(255, 255, 255 , 1);
-    width: 90%;
-    height: 1000rpx;
+    background: linear-gradient(to bottom right, rgba(0,40,89, .5), rgba(35,109,134,.5));
+    width: 88%;
+    height: 1075rpx;
     display: flex;
     margin: 0 auto; 
-    z-index: 1000;
-    margin-top: 100rpx;
+    z-index: 1075;
+    margin-top: 50rpx;
+    flex-direction: column;
 }
 .main .container .wrapper { 
-    width: 75%;
+    width: 80%;
     height: 85%;
     margin: 80rpx auto 50rpx;
     display: flex;
@@ -44,10 +47,86 @@
     justify-content: space-between;
     flex-wrap: nowrap;
     width: 100%;
-    height: 100rpx;
+    height: 70rpx;
+    margin-bottom: 80rpx;
 }
 .main .container .wrapper .wrapper-header .item{
     font-weight: 700;
     letter-spacing: 3rpx;
     font-size: 40rpx;
+    color: #a0a0a0;
+
+}
+.main .container .wrapper .wrapper-header .item.isselect{
+    font-size: 50rpx;
+    color: #fff;
+    border-bottom: 6rpx solid #BF406B;
+}
+
+.main .container .wrapper .wrapper-content {
+    display: flex;
+    flex-direction: column;
+    
+}
+.main .container .wrapper .wrapper-content .item{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 20rpx;
+}
+.main .container .wrapper .wrapper-content .item-un{
+    width: 100%;
+    margin-bottom: 20rpx;
+    display: flex;
+    flex-wrap: nowrap;
+    color: #a0a0a0;
+}
+.main .container .wrapper .wrapper-content .item-un .fs {
+    margin-right: 25rpx;
+}
+.arrow{
+    margin: 5rpx 15rpx 0 0;
+
+}
+.main .container .wrapper .wrapper-content .item-un .text{
+    margin-left: 25prx;
+    color: #fff;
+}
+.main .container .wrapper .wrapper-content .item .fs {
+    color: #a0a0a0;
+    letter-spacing: 1rpx;
+    margin-bottom: 20rpx;
+}
+.main .container .wrapper .wrapper-content .item .title {
+    width: 100%;
+
+}
+.main .container .wrapper .wrapper-content .item .text {
+    border-bottom: 1px solid #ffffff;
+    color: #ffffff;
+    padding-bottom: 10prx;
+}
+
+.main .container .wrapper .wrapper-content .item .textarea{
+    color: #fff;
+    width: 100%;
+    background: linear-gradient(to bottom right, rgba(11,63,103, .8), rgba(36,112,136, .8));
+    height: 150rpx;
+}
+.main .container .wrapper .wrapper-content .item .up {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.release {
+    width: 100%;
+    height: 70rpx;
+    line-height: 70rpx;
+    text-align: center;
+    background-color:#BF406B;
+    color: #fff;
+
+    /* position: fixed;
+    left: 50%;
+    transform: translate(-50%, -50%) */
 }

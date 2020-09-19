@@ -1,6 +1,14 @@
 /* 搜索框 */
 .wrapper {
-    background: white;
+    /* background: white; */
+    z-index: 1;
+}
+.sort-bg {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    margin-top: -40rpx;
 }
 .quiet {
     position:fixed;
@@ -112,7 +120,7 @@
     z-index: 2;
     background: #fff;
     box-shadow: 1px 1px 5px #888888;
-    margin-top: 20rpx;
+    margin-top: -20rpx;
 }
 .search_result{
     width: 570rpx;    
@@ -137,7 +145,7 @@
 
 /*搜索历史*/
 .history {
-    margin: 260rpx 0 0 40rpx;
+    margin: 300rpx 0 0 40rpx;
 }
 .history-name {
     font-size: 28rpx;
@@ -155,7 +163,7 @@
 }
 .allhistorybox {
     margin: 30rpx 20rpx 0 0;
-    background-color: dimgray;
+    background-color: #ededed;
     border-radius: 10rpx;
 }
 .historyname {
@@ -165,16 +173,15 @@
 
 .water {
     background: #32B4FF;
-    height: 130rpx;
+    height: 140rpx;
 }
 
 /* 分类栏 */
 .sort {
     display: flex;
-    background: #ededed;
     justify-content: space-between;
     padding: 30rpx 40rpx;
-    margin: 300rpx 30rpx 20rpx 30rpx;
+    margin: 320rpx 30rpx 20rpx 30rpx;
     border-radius: 30rpx;
     box-shadow: 1px 1px 5px #888888;
 }
@@ -202,7 +209,6 @@
     border-radius: 20rpx; 
     height: 400rpx;
     box-shadow: 1px 1px 5px #888888;
-    background: #ededed;
     z-index: -1;
 }
 .top {
@@ -221,6 +227,8 @@
     height: 30rpx;
     position: absolute;
     margin-top: 8rpx;
+    margin-left: -60rpx;
+
 }
 .look {
     font-size: 24rpx;
