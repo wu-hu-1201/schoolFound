@@ -14,12 +14,6 @@ exports.main = async (event, context) => {
   .get()
   
   return list
-  // for (let item of list.data) {
-  //   if(item.tag != tag ){Result1.push(item)}
-      
-    
-  // }
-  // return Result1
- 
+
   
 }

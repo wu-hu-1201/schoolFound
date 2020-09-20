@@ -32,7 +32,7 @@
         </view>
         <lost-item class="lost-item" LostList='{{selectCategory}}'></lost-item>
     </view>
-    <van-button plain hairline type="primary" size="small" icon="plus" class="release" bindtap="ToRelease">发布</van-button>
+    <van-button  type="primary" size="small" icon="plus" class="release" bindtap="ToRelease">发布</van-button>
     
 
 </view>

@@ -36,7 +36,7 @@ Page({
       }     
     }).then(res => {
       this.setData({
-        releaseList: res.result.data
+        releaseList: res.result.data.reverse()
       })
     })
     let that = this

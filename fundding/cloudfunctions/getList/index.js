@@ -22,21 +22,15 @@ exports.main = async (event, context) => {
   let Result2 = []
   let Result3 = []
   let Result4 = []
-  
-  // for (let item of list.data) {
-  //   if(item.tag != tag ){Result1.push(item)}
-      
-    
-  // }
-  // return Result1
+
   for (let item of list.data) {
     if(tag != item.tag) {
-      Result0.push(item)
+      Result0.unshift(item)
     } else {
-      if(tag =='证件' ){Result1.push(item)}
-      if(tag =='书籍' ){Result2.push(item)}
-      if(tag =='伞' ){Result3.push(item)}
-      if(tag =='其他' ){Result4.push(item)}
+      if(tag =='证件' ){Result1.unshift(item)}
+      if(tag =='书籍' ){Result2.unshift(item)}
+      if(tag =='伞' ){Result3.unshift(item)}
+      if(tag =='其他' ){Result4.unshift(item)}
     }
   }
   if (tag =='全部') {

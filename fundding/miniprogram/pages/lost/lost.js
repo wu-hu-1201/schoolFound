@@ -14,12 +14,8 @@ Page({
       '其他'
     ],
     clickNum: 0,
-    selectCategory: [],
-    selectCategory0: [],
-    selectCategory1: [],
-    selectCategory2: [],
-    selectCategory3: [],
-    selectCategory4: []
+    selectCategory: []
+
     
   },
 
@@ -39,35 +35,10 @@ Page({
       }     
     }).then(res => {
       this.setData({
-        selectCategory: res.result
+        selectCategory: res.result.reverse()
       })
     })
-      //把数据从后台缓存下来
-      if (e.target.dataset.tag =='全部') {
-        this.setData({
-          selectCategory0: this.data.selectCategory
-        })
-      }
-      if (e.target.dataset.tag == '证件') {
-        this.setData({
-          selectCategory1: this.data.selectCategory
-        })
-      }
-      if (e.target.dataset.tag == '书籍') {
-        this.setData({
-          selectCategory2: this.data.selectCategory
-        })
-      }
-      if (e.target.dataset.tag == '伞') {
-        this.setData({
-          selectCategory3: this.data.selectCategory
-        })
-      }
-      if (e.target.dataset.tag == '其他') {
-        this.setData({
-          selectCategory4: this.data.selectCategory
-        })
-      }
+
       
     
    
@@ -105,63 +76,6 @@ Page({
     })
     //数据更新并缓存
     
-    if(!this.data.selectCategory1.length) {
-      wx.cloud.callFunction({
-        name:'getList',
-        data: {
-          kind: 'lost',
-          tag: '证件',
-        }     
-      }).then(res => {
-        this.setData({
-          // selectCategory: res.result,
-          selectCategory1: res.result
-        })
-      })
-    }
-    if(!this.data.selectCategory2.length) {
-      wx.cloud.callFunction({
-        name:'getList',
-        data: {
-          kind: 'lost',
-          tag: '书籍',
-        }     
-      }).then(res => {
-        this.setData({
-          // selectCategory: res.result,
-          selectCategory2: res.result
-        })
-      })
-    }
-    if(!this.data.selectCategory3.length) {
-      wx.cloud.callFunction({
-        name:'getList',
-        data: {
-          kind: 'lost',
-          tag: '伞',
-        }     
-      }).then(res => {
-        this.setData({
-          // selectCategory: res.result,
-          selectCategory3: res.result
-        })
-      })
-    }
-    if(!this.data.selectCategory4.length) {
-      wx.cloud.callFunction({
-        name:'getList',
-        data: {
-          kind: 'lost',
-          tag: '其他',
-        }     
-      }).then(res => {
-        this.setData({
-          // selectCategory: res.result,
-          selectCategory4: res.result
-        })
-      })
-    }
-    if(!this.data.selectCategory0.length) {
       wx.cloud.callFunction({
         name:'getList',
         data: {
@@ -170,11 +84,11 @@ Page({
         }     
       }).then(res => {
         this.setData({
-          selectCategory: res.result,
-          selectCategory0: res.result
+          selectCategory: res.result.reverse(),
+ 
         })
       })
-    }
+    
     // this.setData({
     //   selectCategory: this.data.selectCategory0
     // })
