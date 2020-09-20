@@ -124,14 +124,16 @@ Page({
   // input失去焦点函数
   routeSearchResPage: function (e) {
     console.log(e.detail.value)
-    // console.log(this.data.searchKey.length)  
-    // if (this.data.inputValue.length) {  // 当搜索框有值的情况下才把搜索值存放到历史中，避免将空值存入历史记录
+    console.log(this.data.searchKey.length)  
+    if (this.data.inputValue) {  // 当搜索框有值的情况下才把搜索值存放到历史中，避免将空值存入历史记录
     let history = wx.getStorageSync("history") || [];
     history = history.filter(item => item !== this.data.inputValue)  // 历史去重
     history.unshift(this.data.inputValue)
     console.log(history)
     wx.setStorageSync("history", history);
-    // } 
+    } else {
+      return
+    }
   },
 
 
