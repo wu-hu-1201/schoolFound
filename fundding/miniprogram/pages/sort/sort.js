@@ -80,6 +80,9 @@ Page({
 
   //获取input文本并且实时搜索
   getSearchKey: function (e) {
+    this.setData({
+      inputValue: ''
+    })
     // console.log(e)
     if (e.detail.cursor === 0) {
       this.setData({
@@ -88,14 +91,14 @@ Page({
       return
     }
     console.log(e.detail.value) //打印出输入框的值
-    if (e.detail.value) { // 当input框有值时，才显示清除按钮'x'
+    if (e.detail.value.length > 0) { // 当input框有值时，才显示清除按钮'x'
       this.setData({
         showClean: false,  // 出现清除按钮
         showSuggest: true,
         showView: false,
         isShow: false,
-        inputValue: e.detail.value,
-        // searchKey: e.detail.value
+        inputValue: e.detail.value.trim(),
+        searchKey: e.detail.value.trim()
       })
       // console.log(this.data.searchKey)
       const self = this
@@ -125,10 +128,10 @@ Page({
   routeSearchResPage: function (e) {
     console.log(e.detail.value)
     console.log(this.data.searchKey.length)  
-    if (this.data.inputValue) {  // 当搜索框有值的情况下才把搜索值存放到历史中，避免将空值存入历史记录
+    if (this.data.searchKey.length) {  // 当搜索框有值的情况下才把搜索值存放到历史中，避免将空值存入历史记录
     let history = wx.getStorageSync("history") || [];
-    history = history.filter(item => item !== this.data.inputValue)  // 历史去重
-    history.unshift(this.data.inputValue)
+    history = history.filter(item => item !== this.data.searchKey)  // 历史去重
+    history.unshift(this.data.searchKey)
     console.log(history)
     wx.setStorageSync("history", history);
     } else {
@@ -148,7 +151,7 @@ Page({
       isShow: false,
       showView: false,
       showHistory: false,
-      searchKey: e.currentTarget.dataset.value
+      // searchKey: e.currentTarget.dataset.value
     })
     console.log(this.data.inputValue)
     // this.getSearchKey()
@@ -216,7 +219,7 @@ Page({
    * 生命周期函数--监听页面加载
    * 
    */
-  onLoad: async function () {
+  onShow: async function () {
     await wx.cloud.callFunction({
       name:'getList',
       data: {
@@ -246,23 +249,61 @@ Page({
       allThing: list
     })
     console.log(this.data.allThing)
+
+
+    this.setData({
+      history: wx.getStorageSync("history") || []
+    })
     
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-    this.setData({
-      history: wx.getStorageSync("history") || []
-    })
+  onLoad: function () {
+    
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+this.setData({
+  allThing: [
+    {
+      tag: '证件',
+      des: []
+    },
+    {
+      tag: '书籍',
+      des: []
+    },
+    {
+      tag: '背包',
+      des: []
+    },
+    {
+      tag: '伞',
+      des: []
+    },
+    {
+      tag: '化妆品',
+      des: []
+    },
+    {
+      tag: '电子产品',
+      des: []
+    },
+    {
+      tag: '钥匙',
+      des: []
+    },
+    {
+      tag: '其他',
+      des: []
+    },
+  ],
+})
   },
 
   /**

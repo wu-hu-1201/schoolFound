@@ -93,6 +93,7 @@
     text-align: center;
     display: flex;
 
+
 }
 .container-content .content-release .item-release .content .left .date {
     text-align: center;
@@ -102,15 +103,15 @@
 }
 .container-content .content-release .item-release .content .right {
     flex: 1;
-    margin: 20rpx;
+    margin: 20rpx 5rpx 20rpx 20rpx;
     height: 200rpx;
     font-size: 30rpx;
     text-align: center;
     display: flex;
-    
+
 }
 .container-content .content-release .item-release .content .right .intro{
-    width: 100%;
+    width: 95%;
     margin: auto;
     overflow : hidden;
     text-overflow: ellipsis;
@@ -118,8 +119,10 @@
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     align-items: center;
-
-
+}
+.container-content .content-release .item-release .content .cross{
+    margin-top: 40rpx;
+    margin-right: 20rpx;
 }
 
 

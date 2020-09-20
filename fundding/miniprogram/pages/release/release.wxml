@@ -15,7 +15,7 @@
             </view>
             <view class="wrapper-content">
                 <view class="item  h120">
-                    <view class="title fs">标题</view>
+                    <view class="title fs">标题()</view>
                     <input 
                     class="text {{isWarning == 1? 'warning' : ''}}" 
                     type="text" 
@@ -39,8 +39,8 @@
                     />
                 </view>
                 <view class="item">
-                    <view class="intro fs">简介</view>
-                    <textarea placeholder-class="placeholder"class="textarea {{isWarning == 3? 'warning' : ''}}" placeholder="{{placeholder}}" placeholder-style="color: #666F8E" maxlength="200" bindinput="introInput"></textarea>
+                    <view class="intro fs">简介({{placeholder}})</view>
+                    <textarea class="textarea {{isWarning == 3? 'warning' : ''}}"  maxlength="200" bindinput="introInput"></textarea>
                 </view>
                 <view class="item">
                     <view class="title fs {{isWarning == 4? 'warning' : ''}}">上传图片</view>

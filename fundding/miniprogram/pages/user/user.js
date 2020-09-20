@@ -26,10 +26,30 @@ Page({
     })
   },
 
+  delete: function(e) {
+    let list = this.data.releaseList
+    let Olist = this.data.releaseList
+    list.forEach((item, index) => {
+      if (item._id === e.currentTarget.dataset._id){
+        Olist.splice(index, 1)
+      }
+    })
+    this.setData({
+      releaseList: Olist
+    })
+    wx.cloud.callFunction({
+      name:'deleteItem',
+      data: {
+        _id: e.currentTarget.dataset._id,
+      }     
+    })
+    
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: async function (options) {
+  onShow: async function (options) {
     await wx.cloud.callFunction({
       name:'getMyRelease',
       data: {
@@ -61,7 +81,7 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onLoad: function () {
 
   },
 

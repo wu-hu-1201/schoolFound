@@ -3,6 +3,7 @@
     width: 100%;
     height: 9vh;
     background: #002859;
+    
 }
 .main{
     width: 100%;

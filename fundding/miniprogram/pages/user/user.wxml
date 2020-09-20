@@ -13,13 +13,14 @@
                 <view class="title">我的发布</view>    
             </view>
             <view class="item-release">
-                <view class="content" wx:for="{{releaseList}}" wx:key="index"  bindtap="goDetail" data-_id="{{item._id}}">  
-                    <view class="left item">
+                <view class="content" wx:for="{{releaseList}}" wx:key="index" >  
+                    <view class="left item"  bindtap="goDetail" data-_id="{{item._id}}">
                         <view class="date">{{item.date}}</view>
                     </view>
-                    <view class="right item" >
+                    <view class="right item"  bindtap="goDetail" data-_id="{{item._id}}">
                         <view class="intro">{{item.intro}}</view>
                     </view>
+                    <van-icon name="cross" class="cross" bindtap="delete" data-_id="{{item._id}}"/>
 
                 </view>
             </view>
