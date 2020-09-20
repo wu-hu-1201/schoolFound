@@ -5,8 +5,8 @@
             <image class="back-img" src="../../images/info-back.png" bindtap="back" />
         </view>
         <view class="top">
-            <text class="top-01 text">Hotel Booking</text>
-            <text class="top-02 text">Best wish all for yours</text>
+            <text class="top-01 text">Pay It Forward</text>
+            <text class="top-02 text">Get it back to you</text>
         </view>
     </view>
     <view class="wrapper">

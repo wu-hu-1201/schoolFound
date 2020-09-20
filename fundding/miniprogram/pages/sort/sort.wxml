@@ -53,7 +53,7 @@
         </view>
     </view>
     <!-- 物品类标题栏 -->
-    <view class="{{showView? 'group' : 'hide'}}" wx:for="{{allThing}}" wx:key="index">
+    <view class="{{showView? 'group' : 'hide'}}" wx:for="{{allThing}}" wx:key="index" wx:if="{{item.des.length > 0}}">
         <view class="top">
             <text class="title">{{item.tag}}</text>
             <view class="moreLook" data-tag="{{item.tag}}" bindtap="lookInfo">
