@@ -50,7 +50,7 @@ Page({
     kind: 'lost',
     titleValue: '',
     introValue: '',
-    cloudPath:[]
+    cloudPath: []
   },
 
 
@@ -181,196 +181,85 @@ Page({
 
   },
 
-  // 上传图片
-  uploadToCloud() {
-    
-    let newFileList = []
-    if (!this.data.fileList.length) {
-      wx.showToast({ title: '请选择图片', icon: 'none' });
-    } else {
-      let tmpFileName = (+ new Date() + Math.floor(Math.random()*1000)).toString() + '.png'
-      const uploadTasks = this.data.fileList.map((file, index) => {
-        return wx.cloud.uploadFile({
-          cloudPath: tmpFileName,
-          filePath: file.url
-        }); 
-      })
-      Promise.all(uploadTasks)
-        .then(data => {
-          wx.showToast({ title: '上传成功', icon: 'none' });
-          data.map(item => { 
-            newFileList.push({url: item.fileID})
-          });
-          this.setData({ fileList: newFileList, cloudPath: data});
-          console.log(this.data.cloudPath, this.data.fileList)
-        })
-        .catch(e => {
-          wx.showToast({ title: '上传失败', icon: 'none' });
-          console.log(e);
-        });
-    }
-  },
-
-
+  
   //调用云函数,把发布的数据添加到数据库里
   release: async function () {
     let newFileList = []
-    if (!this.data.fileList.length) {
-      wx.showToast({ title: '请选择图片', icon: 'none' });
-    } else {
-      let tmpFileName = (+ new Date() + Math.floor(Math.random()*1000)).toString() + '.png'
+    
+      let tmpFileName = (+ new Date() + Math.floor(Math.random() * 1000)).toString() + '.png'
       const uploadTasks = this.data.fileList.map((file, index) => {
         return wx.cloud.uploadFile({
           cloudPath: tmpFileName,
           filePath: file.url
-        }); 
-        
+        });
+
       })
       Promise.all(uploadTasks)
         .then(data => {
-          wx.showToast({ title: '上传成功', icon: 'none' });
-          data.map(item => { 
-            newFileList.push({url: item.fileID})
+          data.map(item => {
+            newFileList.push({ url: item.fileID })
           });
-          this.setData({ fileList: newFileList, cloudPath: data});
+          this.setData({ fileList: newFileList, cloudPath: data });
           console.log(this.data.cloudPath, this.data.fileList)
-          
+
 
 
           let date = utils.getNowFormatDate()
-    const self = this
-    if (this.data.titleValue && this.data.introValue && this.data.selectCon != '点击选择发布物品的类别' && this.data.fileList.length) {
-      wx.cloud.callFunction({
-        name: 'release',
-        data: {
-          images: self.data.fileList,
-          tag: self.data.selectCon,
-          kind: self.data.kind,
-          title: self.data.titleValue,
-          intro: self.data.introValue,
-          date: date
-        }
-      }).then(res => {
-        console.log(res)
-      })
-      Notify({ type: 'success', message: '发布成功啦', safeAreaInsetTop: true });
-      setTimeout(() => {
-        wx.switchTab({
-          url: '../lost/lost'
-        });
-      }, 3000)
+          const self = this
+          if (this.data.titleValue && this.data.introValue && this.data.selectCon != '点击选择发布物品的类别' && this.data.fileList.length) {
+            wx.cloud.callFunction({
+              name: 'release',
+              data: {
+                images: self.data.fileList,
+                tag: self.data.selectCon,
+                kind: self.data.kind,
+                title: self.data.titleValue,
+                intro: self.data.introValue,
+                date: date
+              }
+            }).then(res => {
+              console.log(res)
+            })
+            Notify({ type: 'success', message: '发布成功啦', safeAreaInsetTop: true });
+            setTimeout(() => {
+              wx.switchTab({
+                url: '../lost/lost'
+              });
+            }, 3000)
 
-      return
-    } else {
-      if (this.data.titleValue == '') {
-        Notify({ type: 'warning', message: '标题不能为空哟', safeAreaInsetTop: true });
-        this.setData({
-          isWarning: 1
+            return
+          } else {
+            if (this.data.titleValue == '') {
+              Notify({ type: 'warning', message: '标题不能为空哟', safeAreaInsetTop: true });
+              this.setData({
+                isWarning: 1
+              })
+              return
+            }
+            if (this.data.selectCon == '点击选择发布物品的类别') {
+              Notify({ type: 'warning', message: '??标签一定要选哦~', safeAreaInsetTop: true });
+              this.setData({
+                isWarning: 2
+              })
+              return
+            }
+            if (this.data.introValue == '') {
+              Notify({ type: 'warning', message: '简介可不能为空哟', safeAreaInsetTop: true });
+              this.setData({
+                isWarning: 3
+              })
+              return
+            }
+            if (!this.data.fileList.length) {
+              Notify({ type: 'warning', message: '图片至少一张呢', safeAreaInsetTop: true });
+              this.setData({
+                isWarning: 4
+              })
+              return
+            }
+          }
         })
-        return
-      }
-      if (this.data.selectCon == '点击选择发布物品的类别') {
-        Notify({ type: 'warning', message: '🏷标签一定要选哦~', safeAreaInsetTop: true });
-        this.setData({
-          isWarning: 2
-        })
-        return
-      }
-      if (this.data.introValue == '') {
-        Notify({ type: 'warning', message: '简介可不能为空哟', safeAreaInsetTop: true });
-        this.setData({
-          isWarning: 3
-        })
-        return
-      }
-      if (!this.data.fileList.length) {
-        Notify({ type: 'warning', message: '图片至少一张呢', safeAreaInsetTop: true });
-        this.setData({
-          isWarning: 4
-        })
-        return
-      }
-    }
 
-
-
-
-
-
-
-        })
-        .catch(e => {
-          wx.showToast({ title: '上传失败', icon: 'none' });
-          console.log(e);
-        });
-    }
-
-
-
-
-
-    
-    console.log(this.data.cloudPath)
-    
-    
-    
-    
-    // this.uploadToCloud()
-    // console.log(this.data.cloudPath)
-    // let date = utils.getNowFormatDate()
-    // const self = this
-    // if (this.data.titleValue && this.data.introValue && this.data.selectCon != '点击选择发布物品的类别' && this.data.fileList.length) {
-    //   await wx.cloud.callFunction({
-    //     name: 'release',
-    //     data: {
-    //       images: self.data.cloudPath,
-    //       tag: self.data.selectCon,
-    //       kind: self.data.kind,
-    //       title: self.data.titleValue,
-    //       intro: self.data.introValue,
-    //       date: date
-    //     }
-    //   }).then(res => {
-    //     console.log(res)
-    //   })
-    //   Notify({ type: 'success', message: '发布成功啦', safeAreaInsetTop: true });
-    //   setTimeout(() => {
-    //     wx.switchTab({
-    //       url: '../lost/lost'
-    //     });
-    //   }, 3000)
-
-    //   return
-    // } else {
-    //   if (this.data.titleValue == '') {
-    //     Notify({ type: 'warning', message: '标题不能为空哟', safeAreaInsetTop: true });
-    //     this.setData({
-    //       isWarning: 1
-    //     })
-    //     return
-    //   }
-    //   if (this.data.selectCon == '点击选择发布物品的类别') {
-    //     Notify({ type: 'warning', message: '🏷标签一定要选哦~', safeAreaInsetTop: true });
-    //     this.setData({
-    //       isWarning: 2
-    //     })
-    //     return
-    //   }
-    //   if (this.data.introValue == '') {
-    //     Notify({ type: 'warning', message: '简介可不能为空哟', safeAreaInsetTop: true });
-    //     this.setData({
-    //       isWarning: 3
-    //     })
-    //     return
-    //   }
-    //   if (!this.data.fileList.length) {
-    //     Notify({ type: 'warning', message: '图片至少一张呢', safeAreaInsetTop: true });
-    //     this.setData({
-    //       isWarning: 4
-    //     })
-    //     return
-    //   }
-    // }
   },
   /**
    * 生命周期函数--监听页面加载
@@ -428,6 +317,7 @@ Page({
 
   }
 })
+
 
 
 

@@ -237,7 +237,7 @@ Page({
         if (item.tag == one.tag){
           // console.log(item)
           // console.log(one)
-          item.des.push(one)
+          item.des.unshift(one)
         }
       } 
     });

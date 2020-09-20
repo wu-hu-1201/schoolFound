@@ -25,7 +25,7 @@ Page({
     }).then(res => {
       console.log(res.result)
       this.setData({
-        result: res.result
+        result: res.result.reverse()
       })
     })
   },
