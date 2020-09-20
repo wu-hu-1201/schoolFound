@@ -12,8 +12,9 @@ Page({
     searchKey: [],
     isShow: true,
     showClean: true,
-    showSuggest: true,
+    showSuggest: false,
     showHistory: true,
+    showSearchResult:true,
     showView: true,
     history: [],
     searchSuggest: [],
@@ -162,46 +163,43 @@ Page({
         ]
       },
     ],
-    detail: [
-      {
-        photo: '../../images/info-logo1.png',
-        test: '金龙啊，我在上次吃饭的地方捡到了你的伞，就在浏阳蒸菜馆里面捡到的，看到了联系我来拿哦，我的联系QQ是：1871516072',
-        // images: [
-        //   {img: '../../images/sort-u.png'}
-        // ],
-        time: '2020-09-15 13:14',
-        images: [
-          {img: '../../images/sort-u.png'},
-          {img: '../../images/sort-b.png'},
-          {img: '../../images/sort-c.png'}
-        ]
-      }
-    ]
+    // detail: [
+    //   {
+    //     photo: '../../images/info-logo1.png',
+    //     test: '金龙啊，我在上次吃饭的地方捡到了你的伞，就在浏阳蒸菜馆里面捡到的，看到了联系我来拿哦，我的联系QQ是：1871516072',
+    //     // images: [
+    //     //   {img: '../../images/sort-u.png'}
+    //     // ],
+    //     time: '2020-09-15 13:14',
+    //     images: [
+    //       {img: '../../images/sort-u.png'},
+    //       {img: '../../images/sort-b.png'},
+    //       {img: '../../images/sort-c.png'}
+    //     ]
+    //   }
+    // ]
   },
 
-  show: function(){
-    this.setData({
-      isShow: false,
-      showView: false,
-      showHistory: false,
-      showClean: false
-    })
-  },
+
   // 点x将输入框的内容清空
   clearInput: function (e) {
     // console.log('a')
     this.setData({
       inputValue: '',
-      showSongResult: false,
+      showSuggest: false,
       showClean:true
     })
   },
+
   cancel: function(){
     this.setData({
       isShow: true,
       showView: true,
       showHistory:true,
-      showClean: true
+      showClean: true,
+      showSuggest: false,
+      inputValue: '',
+      showSearchResult: true
     })
   },
 
@@ -210,7 +208,7 @@ Page({
     // console.log(e)
     if(e.detail.cursor === 0){
       this.setData({
-        showSongResult: false
+        showSuggest: false
       })
       return
     }
@@ -218,9 +216,13 @@ Page({
     if (e.detail.value) { // 当input框有值时，才显示清除按钮'x'
       this.setData({
         showClean: false,  // 出现清除按钮
-        showSongResult: true,
-        inputValue: e.detail.value
+        showSuggest: true,
+        showView: false,
+        isShow: false,
+        inputValue: e.detail.value,
+        // searchKey: e.detail.value
       })
+      // console.log(this.data.searchKey)
 
       // // 链接数据库
       // const db = wx.cloud.database()
@@ -262,19 +264,42 @@ Page({
     }
   },
 
-  fill_value: function (e) {
-    console.log(e)
+
+
+
+  // input失去焦点函数
+  routeSearchResPage: function (e) {
+    console.log(e.detail.value)
+    // console.log(this.data.searchKey.length)  
+    // if (this.data.inputValue.length) {  // 当搜索框有值的情况下才把搜索值存放到历史中，避免将空值存入历史记录
+      let history = wx.getStorageSync("history") || [];
+      history = history.filter(item => item !== this.data.inputValue)  // 历史去重
+      history.unshift(this.data.inputValue)
+      console.log(history)
+      wx.setStorageSync("history", history);
+    // } 
+  },
+
+
+  fill_value: async function (e) {
+    console.log(e.currentTarget.dataset.value)
     this.setData({
-      inputValue: e.currentTarget.dataset.value,//在输入框显示内容
-      showSongResult: false, //给false值，隐藏搜索建议页面
+      inputValue: e.currentTarget.dataset.value.trim(),//在输入框显示内容
+      showSuggest: false, //给false值，隐藏搜索建议页面
       showClean: false, // 显示 清除按钮
+      showHistory: true,
+      showSearchResult: false,
+      isShow: false,
+      showView: false,
+      showHistory: false,
+      searchKey: e.currentTarget.dataset.value
     })
     console.log(this.data.inputValue)
     // this.getSearchKey()
     // 把此时点击的数值传给云函数，查找数据库中带有这个数值每条数据，并将数据返回给到数组searchResult
-    let inputValue = this.data.inputValue 
+    let inputValue = this.data.inputValue;
 
-    wx.cloud.callFunction({  // 调用云函数
+    await wx.cloud.callFunction({  // 调用云函数
       name: 'getSearchSuggest',
       data: {
         inputValue: inputValue,
@@ -295,26 +320,35 @@ Page({
   },
 
 
-  // input失去焦点函数
-  routeSearchResPage: function (e) {
-    // console.log(e.detail.value)
-    // console.log(this.data.searchKey.length)  
-    if (this.data.searchKey.length > 0) {  // 当搜索框有值的情况下才把搜索值存放到历史中，避免将空值存入历史记录
-      let history = wx.getStorageSync("history") || [];
-      // console.log(history);
-      history = history.filter(item => item !== this.data.searchKey)  // 历史去重
-      history.unshift(this.data.searchKey)
-      wx.setStorageSync("history", history);
-    } 
+  // 搜索完成后(点击搜索建议的某一条即出搜索结果，搜索完成)
+  // searchOver: function () {
+  //   this.setData({
+  //     showSuggest: false  // 搜索建议这块容器消失
+  //   })
+  //   this.searchResult();  // 执行搜索结果
+  // },
+
+
+  // 清空page对象data的history数组 重置缓存为[]（空）
+  clearHistory: function () {
+    const that = this;
+    wx.showModal({
+      content: '确认清空全部历史记录',
+      cancelColor: '#DE655C',
+      confirmColor: '#DE655C',
+      success(res) {
+        if (res.confirm) {
+          that.setData({
+            history: []
+          })
+          wx.setStorageSync("history", []) //把空数组给history,即清空历史记录
+        } else if (res.cancel) {
+        }
+      }
+    })
   },
 
-  // 搜索完成后(点击搜索建议的某一条即出搜索结果，搜索完成)
-  searchOver: function () {
-    this.setData({
-      showSuggest: false  // 搜索建议这块容器消失
-    })
-    this.searchResult();  // 执行搜索结果
-  },
+
 
   lookInfo: function (e) {
     console.log(e)

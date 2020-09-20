@@ -10,12 +10,11 @@ exports.main = async (event, context) => {
   const inputValue = event.inputValue
   const kind = event.kind
   const checkGroupList = await db.collection('groupList').where({
-    title: inputValue,
-    // title: RegExp({
-    //   regexp: inputValue,
-    //   options: 'i',
-    // }),
-    kind: kind
+    title: db.RegExp({
+      regexp: '.*' + inputValue,
+      options: 'i',
+    }),
+    kind: kind,
   }).get()
   let result = []
   for(let item of checkGroupList.data) {

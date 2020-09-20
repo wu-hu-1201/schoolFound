@@ -2,7 +2,7 @@
 <!-- 分类界面 -->
 <!-- 搜索框 -->
 <view class="{{showSort? 'wrapper' : 'hide'}}">
-    <image class="sort-bg" src="../../images/sort01.jpg"/>
+    <image class="sort-bg" src="../../images/sort01.jpg" />
     <view class="quiet">
         <view class="top-block"></view>
         <view class="water">
@@ -10,13 +10,11 @@
             <view class="page__bd">
                 <view class="weui-search-bar">
                     <view class="weui-search-bar__form">
-                        <view class="weui-search-bar__box" bindtap="show">
-                            <icon class="weui-icon-search_in-box" type="search" size="14" color='#eeeeee'></icon>
-                            <input focus='true' type="text" class="weui-search-bar__input" placeholder="请输入物品关键词" placeholder-style="color:#eeeeee" value='{{inputValue}}' bindinput="getSearchKey" bindblur="routeSearchResPage" bindconfirm="searchover" />
-                            <!-- 点击×可以清空正在输入 -->
-                            <view class="{{showClean? 'hide': 'weui-icon-clear'}}">
-                                <icon type="clear" size="14" color='#999999' bindtap="clearInput"></icon>
-                            </view>
+                        <icon class="weui-icon-search_in-box" type="search" size="14" color='#eeeeee'></icon>
+                        <input focus='true' type="text" class="weui-search-bar__input" placeholder="请输入物品关键词" placeholder-style="color:#eeeeee" value='{{inputValue}}' bindinput="getSearchKey" bindblur="routeSearchResPage"/>
+                        <!-- 点击×可以清空正在输入 -->
+                        <view class="{{showClean? 'hide': 'weui-icon-clear'}}">
+                            <icon type="clear" size="14" color='#999999' bindtap="clearInput"></icon>
                         </view>
                     </view>
                     <!-- 取消搜索 -->
@@ -34,8 +32,14 @@
             <view class="search_suggest_name">{{item.title}}</view>
         </view>
     </view>
+    <!-- 搜索结果 -->
+    <view class="{{showSearchResult ? 'hide' : 'search_result_songs'}}">
+        <view wx:for="{{searchResult}}" wx:key="index" class='search_result_song_item' data-_id="{{item._id}}" bindtap='goDetail'>
+            <view class='search_result_song_song_name'>{{item.title}}</view>
+        </view>
+    </view>
     <!-- 搜索历史 -->
-    <view class="{{showHistory ? 'hide' : 'option'}}">
+    <view class="{{showHistory ? 'option' : 'hide'}}">
         <view class="history">
             <view class="history-wrapper">
                 <text class="history-name">历史记录</text>
@@ -46,13 +50,6 @@
                     <text class="historyname">{{item}}</text>
                 </view>
             </view>
-        </view>
-    </view>
-    <!-- 分类名称栏 -->
-    <view class="{{showView? 'sort' : 'hide'}}">
-        <view wx:for="{{thing}}" wx:key="index" class="scrot-box">
-            <image class="img" src="{{item.img}}" />
-            <view class="thingName">{{item.text}}</view>
         </view>
     </view>
     <!-- 物品类标题栏 -->

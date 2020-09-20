@@ -1,9 +1,5 @@
 {
-<<<<<<< HEAD:fundding/cloudfunctions/release/package.json
-  "name": "release",
-=======
   "name": "getSearchSuggest",
->>>>>>> eadd7ef153e4b970650c405c5769311e5ae7c2b9:fundding/cloudfunctions/getSearchSuggest/package.json
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
