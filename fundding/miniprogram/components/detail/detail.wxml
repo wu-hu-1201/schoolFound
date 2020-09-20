@@ -17,7 +17,7 @@
             <view class="des-box">
                 <view class="title">
                     <image class="photo" src="{{item.avatar}}" />
-                    <text class="name">Mr.yuan</text>
+                    <text class="name">{{item.name}}</text>
                 </view>
                 <view class="logo-box">
                     <text class="logo">{{item.tag}}</text>

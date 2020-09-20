@@ -15,7 +15,7 @@
             </view>
             <view class="wrapper-content">
                 <view class="item  h120">
-                    <view class="title fs">标题()</view>
+                    <view class="title fs">标题</view>
                     <input 
                     class="text {{isWarning == 1? 'warning' : ''}}" 
                     type="text" 
