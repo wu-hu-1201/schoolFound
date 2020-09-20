@@ -6,7 +6,9 @@ Page({
    */
   data: {
     releaseList: [
-    ]
+    ],
+    avatar: '',
+    name: ''
   },
 
   //跳转进入发布页面
@@ -27,8 +29,8 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    wx.cloud.callFunction({
+  onLoad: async function (options) {
+    await wx.cloud.callFunction({
       name:'getMyRelease',
       data: {
       }     
@@ -37,6 +39,16 @@ Page({
         releaseList: res.result.data
       })
     })
+    let that = this
+    await wx.getUserInfo({
+      success:function(res){
+       console.log(res);
+       that.setData({
+        avatar: res.userInfo.avatarUrl,
+        name:res.userInfo.nickName,
+       })
+      }
+     })
   },
 
   /**

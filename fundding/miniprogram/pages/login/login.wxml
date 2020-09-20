@@ -1,13 +1,8 @@
-<!-- miniprogram/pages/login/login.wxml -->
+
 <view class="wrapper">
 
+      
     <view class="login">
-        <!-- <view class="title">
-            <text>Move the hands of love</text>
-        </view>-->
-        <view class="test">
-            <text>校园失物招领平台,找回丢失的它！</text>
-        </view> 
         <view class="login-wrapper" >
             <button class="button-box" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" ><text>Experiencing now</text></button>
         </view>

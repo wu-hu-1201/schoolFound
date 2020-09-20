@@ -14,170 +14,29 @@ Page({
     showClean: true,
     showSuggest: false,
     showHistory: true,
-    showSearchResult:true,
+    showSearchResult: true,
     showView: true,
     history: [],
     searchSuggest: [],
-    thing: [
-      {
-        img: '../../images/sort-card.png',
-        text: '证件'
-      },
-      {
-        img: '../../images/sort-book.png',
-        text: '图书'
-      },
-      {
-        img: '../../images/sort-thing.png',
-        text: '物品'
-      },
-      {
-        img: '../../images/sort-ubr.png',
-        text: '雨伞'
-      },
-      {
-        img: '../../images/sort-all.png',
-        text: '分类'
-      }
-
-    ],
+    result: [],
     allThing: [
       {
         tag: '证件',
-        des: [
-          {
-            _id: '0',
-            name: '护照',
-            pic: '../../images/sort-c.png',
-            title: '遗失的物品',
-            time: '2020-9-10'
-          },
-          {
-            _id: '1',
-            name: '图书',
-            pic: '../../images/sort-b.png',
-            title: '遗失的物品',
-            time: '2020-9-10'
-          },
-          {
-            _id: '2',
-            name: '雨伞',
-            pic: '../../images/sort-u.png',
-            title: '遗失的物品',
-            time: '2020-9-10'
-          },
-          {
-            _id: '3',
-            name: '书包',
-            pic: '../../images/sort-bag.png',
-            title: '遗失的物品',
-            time: '2020-9-10'
-          }
-        ]
+        des: []
       },
       {
-        tag: '图书',
-        des: [
-          {
-            name: '书',
-            pic: '../../images/sort-b.png',
-            title: '遗失的物品',
-            time: '2020-9-10'
-          },
-          {
-            name: '身份证',
-            pic: '../../images/sort-c.png',
-            title: '遗失的物品',
-            time: '2020-9-10'
-          },
-          {
-            name: '挎包',
-            pic: '../../images/sort-bag.png',
-            title: '遗失的物品',
-            time: '2020-9-10'
-          },
-          {
-            name: '太阳伞',
-            pic: '../../images/sort-u.png',
-            title: '遗失的物品',
-            time: '2020-9-10'
-          }
-        ]
+        tag: '书籍',
+        des: []
       },
       {
-        tag: '私人物品',
-        des: [
-          {
-            name: '双肩包',
-            pic: '../../images/sort-bag.png',
-            title: '遗失的物品',
-            time: '2020-9-10'
-          },
-          {
-            name: '课本',
-            pic: '../../images/sort-b.png',
-            title: '遗失的物品',
-            time: '2020-9-10'
-          },
-          {
-            name: '一卡通',
-            pic: '../../images/sort-c.png',
-            title: '遗失的物品',
-            time: '2020-9-10'
-          },
-          {
-            name: '遮阳伞',
-            pic: '../../images/sort-u.png',
-            title: '遗失的物品',
-            time: '2020-9-10'
-          }
-        ]
+        tag: '背包',
+        des: []
       },
       {
-        tag: '雨伞',
-        des: [
-          {
-            name: '伞',
-            pic: '../../images/sort-u.png',
-            title: '遗失的物品',
-            time: '2020-9-10'
-          },
-          {
-            name: '画本',
-            pic: '../../images/sort-b.png',
-            title: '遗失的物品',
-            time: '2020-9-10'
-          },
-          {
-            name: '包',
-            pic: '../../images/sort-bag.png',
-            title: '遗失的物品',
-            time: '2020-9-10'
-          },
-          {
-            name: '水卡',
-            pic: '../../images/sort-c.png',
-            title: '遗失的物品',
-            time: '2020-9-10'
-          }
-        ]
+        tag: '伞',
+        des: []
       },
     ],
-    // detail: [
-    //   {
-    //     photo: '../../images/info-logo1.png',
-    //     test: '金龙啊，我在上次吃饭的地方捡到了你的伞，就在浏阳蒸菜馆里面捡到的，看到了联系我来拿哦，我的联系QQ是：1871516072',
-    //     // images: [
-    //     //   {img: '../../images/sort-u.png'}
-    //     // ],
-    //     time: '2020-09-15 13:14',
-    //     images: [
-    //       {img: '../../images/sort-u.png'},
-    //       {img: '../../images/sort-b.png'},
-    //       {img: '../../images/sort-c.png'}
-    //     ]
-    //   }
-    // ]
   },
 
 
@@ -187,15 +46,15 @@ Page({
     this.setData({
       inputValue: '',
       showSuggest: false,
-      showClean:true
+      showClean: true
     })
   },
 
-  cancel: function(){
+  cancel: function () {
     this.setData({
       isShow: true,
       showView: true,
-      showHistory:true,
+      showHistory: true,
       showClean: true,
       showSuggest: false,
       inputValue: '',
@@ -206,7 +65,7 @@ Page({
   //获取input文本并且实时搜索
   getSearchKey: function (e) {
     // console.log(e)
-    if(e.detail.cursor === 0){
+    if (e.detail.cursor === 0) {
       this.setData({
         showSuggest: false
       })
@@ -223,28 +82,7 @@ Page({
         // searchKey: e.detail.value
       })
       // console.log(this.data.searchKey)
-
-      // // 链接数据库
-      // const db = wx.cloud.database()
-      // var that = this
-      // db.collection('groupList').where({
-      //   // 使用正则查询，实现对搜索的模糊查询
-      //   title: db.RegExp({
-      //     // 搜索栏中的输入值作为规则进行匹配
-      //     regexp: e.detail.value,
-      //     options: 'i',
-      //   }),
-      // }).limit(8).get({
-      //   success: res => {
-      //     console.log(res)
-      //     that.setData({
-      //       searchSuggest: res.data
-      //     })
-      //   }
-      // })
-
-
-      const self = this 
+      const self = this
       wx.cloud.callFunction({  // 调用云函数
         name: 'getSearchSuggest',
         data: {
@@ -272,11 +110,11 @@ Page({
     console.log(e.detail.value)
     // console.log(this.data.searchKey.length)  
     // if (this.data.inputValue.length) {  // 当搜索框有值的情况下才把搜索值存放到历史中，避免将空值存入历史记录
-      let history = wx.getStorageSync("history") || [];
-      history = history.filter(item => item !== this.data.inputValue)  // 历史去重
-      history.unshift(this.data.inputValue)
-      console.log(history)
-      wx.setStorageSync("history", history);
+    let history = wx.getStorageSync("history") || [];
+    history = history.filter(item => item !== this.data.inputValue)  // 历史去重
+    history.unshift(this.data.inputValue)
+    console.log(history)
+    wx.setStorageSync("history", history);
     // } 
   },
 
@@ -305,28 +143,13 @@ Page({
         inputValue: inputValue,
         kind: 'lost'
       },
-      // success(res) {
-      //   console.log(res)
-      //   this.setData({
-      //     searchResult: res.result
-      //   })
-      // },
     }).then(res => {
       console.log(res)
-        this.setData({
-          searchResult: res.result
-        })
+      this.setData({
+        searchResult: res.result
+      })
     })
   },
-
-
-  // 搜索完成后(点击搜索建议的某一条即出搜索结果，搜索完成)
-  // searchOver: function () {
-  //   this.setData({
-  //     showSuggest: false  // 搜索建议这块容器消失
-  //   })
-  //   this.searchResult();  // 执行搜索结果
-  // },
 
 
   // 清空page对象data的history数组 重置缓存为[]（空）
@@ -357,7 +180,7 @@ Page({
     })
   },
 
-  goDetail: function(e) {
+  goDetail: function (e) {
     console.log(e)
     wx.navigateTo({
       url: `../detail/detail?_id=${e.currentTarget.dataset._id}`
@@ -374,8 +197,37 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-
+  onReady: async function () {
+    await wx.cloud.callFunction({
+      name:'getList',
+      data: {
+        kind: 'found',
+        tag: '全部',
+      }     
+    }).then(res => {
+      console.log(res.result)
+      this.setData({
+        result: res.result
+      })
+    })
+    let list = this.data.allThing
+    let resultList = this.data.result
+ 
+    list.forEach(item => {
+      for(let one of resultList) {
+       
+        if (item.tag == one.tag){
+          // console.log(item)
+          // console.log(one)
+          item.des.push(one)
+        }
+      } 
+    });
+    this.setData({
+      allThing: list
+    })
+    console.log(this.data.allThing)
+    
   },
 
   /**

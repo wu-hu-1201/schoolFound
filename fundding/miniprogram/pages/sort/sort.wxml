@@ -63,9 +63,9 @@
         <scroll-view class="{{showView? 'scroll-view_thing' : 'hide'}}" scroll-x="{{true}}">
             <view class="item" wx:for="{{item.des}}" wx:key="index" wx:for-item="des">
                 <view class="info" data-_id="{{des._id}}" bindtap="goDetail">
-                    <image class="imag" src="{{des.pic}}"></image>
+                    <image class="imag" src="{{des.images[0].url}}"></image>
                     <view class="name">{{des.title}}</view>
-                    <view class="time">{{des.time}}</view>
+                    <view class="time">{{des.date}}</view>
                 </view>
             </view>
         </scroll-view>
