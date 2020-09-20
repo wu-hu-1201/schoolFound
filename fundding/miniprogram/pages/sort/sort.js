@@ -208,14 +208,15 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  OnReady: function (options) {
 
   },
 
   /**
-   * 生命周期函数--监听页面初次渲染完成
+   * 生命周期函数--监听页面加载
+   * 
    */
-  onReady: async function () {
+  onLoad: async function () {
     await wx.cloud.callFunction({
       name:'getList',
       data: {
@@ -225,11 +226,11 @@ Page({
     }).then(res => {
       console.log(res.result)
       this.setData({
-        result: res.result
+        result: res.result.reverse()
       })
     })
     let list = this.data.allThing
-    let resultList = this.data.result
+    let resultList = this.data.result.reverse()
  
     list.forEach(item => {
       for(let one of resultList) {

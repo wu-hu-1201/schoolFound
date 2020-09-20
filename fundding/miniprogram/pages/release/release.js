@@ -237,7 +237,7 @@ Page({
               return
             }
             if (this.data.selectCon == '点击选择发布物品的类别') {
-              Notify({ type: 'warning', message: '??标签一定要选哦~', safeAreaInsetTop: true });
+              Notify({ type: 'warning', message: '🏷标签一定要选哦~', safeAreaInsetTop: true });
               this.setData({
                 isWarning: 2
               })

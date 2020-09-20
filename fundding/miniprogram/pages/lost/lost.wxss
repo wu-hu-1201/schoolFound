@@ -94,5 +94,5 @@
     position: fixed;
     right: 50rpx;
     bottom: 50rpx;
-    border-radius: 30rpx;
+
 }
