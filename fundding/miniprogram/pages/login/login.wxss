@@ -1,10 +1,4 @@
-/* miniprogram/pages/login/login.wxss */
-.login-bg {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    z-index: -100;
-}
+
 .wrapper{
     height: 100vh;
     width: 100%;
@@ -26,44 +20,23 @@
         background-position: 0% 50%;
     }
 }
-/* .line {
-    height:1px;
-    position:absolute;
-    animation: loadingLine 3s linear infinite; 
-} */
-/* .hide {
-    display: none;
-} */
+
 .login {
-    /* z-index: 1; */
     width: 100%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
 }
-.title {
-    margin-top: 300rpx;
-    color: white;
-    font-size: 48rpx;
-    font-weight: 700;
-}
-.title text {
-    margin-left: 30rpx;
-}
-/* 
-.test {
-    margin-top: 30rpx;
-    font-size: 28rpx;
-    color:#fff;
-}
-.test text {
-    margin-left: 30rpx;
-} */
+
+
 
 .login-wrapper {
     margin: 0 auto;
     display: flex; 
     align-items: center; 
     justify-content: center;
-    margin-top: 500rpx;
+    margin-top: 600rpx;
 }
 
 .button-box {

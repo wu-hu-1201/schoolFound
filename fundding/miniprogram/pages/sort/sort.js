@@ -40,125 +40,31 @@ Page({
       }
 
     ],
+    result:[],
+
     allThing: [
       {
         tag: '证件',
         des: [
-          {
-            _id: '0',
-            name: '护照',
-            pic: '../../images/sort-c.png',
-            title: '遗失的物品',
-            time: '2020-9-10'
-          },
-          {
-            _id: '1',
-            name: '图书',
-            pic: '../../images/sort-b.png',
-            title: '遗失的物品',
-            time: '2020-9-10'
-          },
-          {
-            _id: '2',
-            name: '雨伞',
-            pic: '../../images/sort-u.png',
-            title: '遗失的物品',
-            time: '2020-9-10'
-          },
-          {
-            _id: '3',
-            name: '书包',
-            pic: '../../images/sort-bag.png',
-            title: '遗失的物品',
-            time: '2020-9-10'
-          }
+          
         ]
       },
       {
-        tag: '图书',
+        tag: '书籍',
         des: [
-          {
-            name: '书',
-            pic: '../../images/sort-b.png',
-            title: '遗失的物品',
-            time: '2020-9-10'
-          },
-          {
-            name: '身份证',
-            pic: '../../images/sort-c.png',
-            title: '遗失的物品',
-            time: '2020-9-10'
-          },
-          {
-            name: '挎包',
-            pic: '../../images/sort-bag.png',
-            title: '遗失的物品',
-            time: '2020-9-10'
-          },
-          {
-            name: '太阳伞',
-            pic: '../../images/sort-u.png',
-            title: '遗失的物品',
-            time: '2020-9-10'
-          }
+          
         ]
       },
       {
-        tag: '私人物品',
+        tag: '背包',
         des: [
-          {
-            name: '双肩包',
-            pic: '../../images/sort-bag.png',
-            title: '遗失的物品',
-            time: '2020-9-10'
-          },
-          {
-            name: '课本',
-            pic: '../../images/sort-b.png',
-            title: '遗失的物品',
-            time: '2020-9-10'
-          },
-          {
-            name: '一卡通',
-            pic: '../../images/sort-c.png',
-            title: '遗失的物品',
-            time: '2020-9-10'
-          },
-          {
-            name: '遮阳伞',
-            pic: '../../images/sort-u.png',
-            title: '遗失的物品',
-            time: '2020-9-10'
-          }
+          
         ]
       },
       {
-        tag: '雨伞',
+        tag: '伞',
         des: [
-          {
-            name: '伞',
-            pic: '../../images/sort-u.png',
-            title: '遗失的物品',
-            time: '2020-9-10'
-          },
-          {
-            name: '画本',
-            pic: '../../images/sort-b.png',
-            title: '遗失的物品',
-            time: '2020-9-10'
-          },
-          {
-            name: '包',
-            pic: '../../images/sort-bag.png',
-            title: '遗失的物品',
-            time: '2020-9-10'
-          },
-          {
-            name: '水卡',
-            pic: '../../images/sort-c.png',
-            title: '遗失的物品',
-            time: '2020-9-10'
-          }
+          
         ]
       },
     ],
@@ -262,10 +168,10 @@ Page({
     }
   },
 
-  fill_value: function (e) {
+  fill_value: async function (e) {
     console.log(e)
     this.setData({
-      inputValue: e.currentTarget.dataset.value,//在输入框显示内容
+      inputValue: e.currentTarget.dataset.value.trim(),//在输入框显示内容
       showSongResult: false, //给false值，隐藏搜索建议页面
       showClean: false, // 显示 清除按钮
     })
@@ -274,7 +180,7 @@ Page({
     // 把此时点击的数值传给云函数，查找数据库中带有这个数值每条数据，并将数据返回给到数组searchResult
     let inputValue = this.data.inputValue 
 
-    wx.cloud.callFunction({  // 调用云函数
+    await wx.cloud.callFunction({  // 调用云函数
       name: 'getSearchSuggest',
       data: {
         inputValue: inputValue,
@@ -334,14 +240,43 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: async function () {
+    await wx.cloud.callFunction({
+      name:'getList',
+      data: {
+        kind: 'found',
+        tag: '全部',
+      }     
+    }).then(res => {
+      console.log(res.result)
+      this.setData({
+        result: res.result
+      })
+    })
+    let list = this.data.allThing
+    let resultList = this.data.result
 
+    list.forEach(item => {
+      for(let one of resultList) {
+       
+        if (item.tag == one.tag){
+          // console.log(item)
+          // console.log(one)
+          item.des.push(one)
+        }
+      } 
+    });
+    this.setData({
+      allThing: list
+    })
+    console.log(this.data.allThing)
+    
   },
 
   /**
@@ -351,6 +286,10 @@ Page({
     this.setData({
       history: wx.getStorageSync("history") || []
     })
+
+
+
+    
   },
 
   /**

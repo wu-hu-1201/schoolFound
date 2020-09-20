@@ -1,29 +1,27 @@
-<view class="quiet">
-    <header-bar class="header"></header-bar>
-    <view class="back">
-        <image class="back-img" src="../../images/info-back.png" bindtap="back" />
-    </view>
-    <view class="top">
-        <view class="top-01">
-            <text class="top-01-test">Hotel Booking</text>
+<view class="main">
+    <view class="quiet">
+        <header-bar class="header"></header-bar>
+        <view class="back">
+            <image class="back-img" src="../../images/info-back.png" bindtap="back" />
         </view>
-        <view class="top-02">
-            <text class="top-02-test">Best wish all for yours</text>
+        <view class="top">
+            <text class="top-01 text">Hotel Booking</text>
+            <text class="top-02 text">Best wish all for yours</text>
+        </view>
+    </view>
+    <view class="wrapper">
+        <view class="group" wx:for="{{result}}" wx:key="index" data-id="{{item._id}}" bindtap="goDetail">
+            
+                <image class="group-img" src="{{item.images[0].url}}" />
+                <view class="des">
+                    <view class="title">
+                        <text class="title-t">{{item.title}}</text>
+                    </view>
+                    <view class="text">
+                        <text class="text-t">{{item.intro}}</text>
+                    </view>
+                </view>
+            
         </view>
     </view>
 </view>
-<scroll-view class="wrapper">
-    <view class="group" wx:for="{{kind}}" wx:key="index">
-        <view class="grou-box" data-_id="{{item._id}}" bindtap="goDetail">
-            <image class="group-img" src="{{item.img}}" />
-            <view class="des">
-                <view class="title">
-                    <text>{{item.title}}</text>
-                </view>
-                <view class="test">
-                    <text class="test-t">{{item.test}}</text>
-                </view>
-            </view>
-        </view>
-    </view>
-</scroll-view>

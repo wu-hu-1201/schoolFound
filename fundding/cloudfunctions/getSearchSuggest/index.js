@@ -9,7 +9,7 @@ const db = cloud.database({ env })  //连接当前这个数据库
 exports.main = async (event, context) => {
   const inputValue = event.inputValue
   const kind = event.kind
-  const checkGroupList = await db.collection('groupList').where({
+  let checkGroupList = await db.collection('groupList').where({
     title: inputValue,
     // title: RegExp({
     //   regexp: inputValue,

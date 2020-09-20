@@ -5,8 +5,8 @@
     <view class="cover2"></view>
     <view class="container-content">
         <view class="content-user">
-            <image src="../../images/avatar.jpeg" class="item-ava" alt="" />
-            <view class="item-name">蜗牛</view>
+            <image src="{{avatar}}" class="item-ava" alt="" />
+            <view class="item-name">{{name}}</view>
         </view>
         <view class="content-release">
             <view class="item-title">
